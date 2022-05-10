@@ -6,6 +6,9 @@ namespace Cars.VehicleList
 {
     public class Sedan : Car
     {
-    
+        protected override void OnInteractedWithSmth(List<Collider> interactedColliders)
+        {
+            
+        }
     }
 }

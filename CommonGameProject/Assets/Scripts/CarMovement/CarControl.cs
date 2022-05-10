@@ -1,14 +1,15 @@
+using Cars;
 using Cars.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.ActionsOnVehicle
+namespace PlayerControls
 {
     public class CarControl : MonoBehaviour
     {
         public static CarControl i;
-        public CarMover targetCarMover;
+        public Car targetCar;
 
         private void Awake()
         {
@@ -17,21 +18,25 @@ namespace Cars.ActionsOnVehicle
 
         void Update()
         {
-            if (targetCarMover == null)
+            if (targetCar == null)
                 return;
 
-            targetCarMover.AnimateWheels();
-            targetCarMover.GetInputs();
-            targetCarMover.SnapTrailsWheelsPos();
+            if (Input.GetKeyDown(KeyCode.E))
+                targetCar.Interact();
+
+            targetCar.CarMover.GetInputs();
+
+            targetCar.CarMover.AnimateWheels();
+            targetCar.CarMover.SnapTrailsWheelsPos();
         }
         private void FixedUpdate()
         {
-            if (targetCarMover == null)
+            if (targetCar == null)
                 return;
 
-            targetCarMover.Move();
-            targetCarMover.Turn();
-            targetCarMover.Brake();
+            targetCar.CarMover.Move();
+            targetCar.CarMover.Turn();
+            targetCar.CarMover.Brake();
         }
     }
 }

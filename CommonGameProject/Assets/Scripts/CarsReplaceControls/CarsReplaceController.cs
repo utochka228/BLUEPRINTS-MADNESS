@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using PlayerControls;
 
 namespace Cars.ActionsOnVehicle
 {
@@ -17,7 +18,7 @@ namespace Cars.ActionsOnVehicle
             if (CurrentControlledCar != newCar)
                 CurrentControlledCar = newCar;
 
-            CarControl.i.targetCarMover = newCar.CarMover;
+            CarControl.i.targetCar = newCar;
             // Change UI controls
             // Focus camera to new car
             virtualCamera.Follow = newCar.transform;

@@ -6,6 +6,9 @@ namespace Cars.VehicleList
 {
     public class Jeep : Car
     {
-    
+        protected override void OnInteractedWithSmth(List<Collider> interactedItems)
+        {
+            
+        }
     }
 }

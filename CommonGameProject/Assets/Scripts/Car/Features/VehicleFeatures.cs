@@ -6,21 +6,29 @@ namespace Cars.Features
 {
     namespace LoadingItems
     {
-        interface ICanbeLoaded
+        /// <summary>
+        /// Player can interact with it and it marks item can be placed to some vehicle
+        /// </summary>
+        interface ICanbeLoaded : IInteractable
         {
-            public GameObject MyGameobject { get; set; }
+            void LoadInteraction(Car car);
         }
-        /// <summary>Add items loading to vehicle feature</summary>
+        /// <summary>Add possibility placing items which marked ICanbeLoaded to vehicle</summary>
         interface ILoaderFeature
         {
             void LoadItem(ICanbeLoaded item);
             void UnloadItem(ICanbeLoaded item);
             void UnloadAllItems();
         }
-        interface IResourcesLoaderFeature : ILoaderFeature
+        interface IResourcesLoaderFeature
         {
-
+            void LoadItem(Resources.Resource resource);
+            void UnloadItem(Resources.Resource resource);
+            void UnloadAllItems();
         }
     }
-
+    interface IInteractable
+    {
+        void Interact();
+    }
 }
