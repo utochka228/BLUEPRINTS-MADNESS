@@ -1,33 +1,37 @@
+using Cars.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControl : MonoBehaviour
+namespace Cars.ActionsOnVehicle
 {
-    public static CarControl i;
-    public CarMover targetCarMover;
-
-    private void Awake()
+    public class CarControl : MonoBehaviour
     {
-        i = this;
-    }
+        public static CarControl i;
+        public CarMover targetCarMover;
 
-    void Update()
-    {
-        if (targetCarMover == null)
-            return;
+        private void Awake()
+        {
+            i = this;
+        }
 
-        targetCarMover.AnimateWheels();
-        targetCarMover.GetInputs();
-        targetCarMover.SnapTrailsWheelsPos();
-    }
-    private void FixedUpdate()
-    {
-        if (targetCarMover == null)
-            return;
+        void Update()
+        {
+            if (targetCarMover == null)
+                return;
 
-        targetCarMover.Move();
-        targetCarMover.Turn();
-        targetCarMover.Brake();
+            targetCarMover.AnimateWheels();
+            targetCarMover.GetInputs();
+            targetCarMover.SnapTrailsWheelsPos();
+        }
+        private void FixedUpdate()
+        {
+            if (targetCarMover == null)
+                return;
+
+            targetCarMover.Move();
+            targetCarMover.Turn();
+            targetCarMover.Brake();
+        }
     }
 }
