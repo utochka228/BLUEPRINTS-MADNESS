@@ -1,4 +1,5 @@
 using Cars;
+using Cars.ActionsOnVehicle;
 using Cars.Movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,21 @@ namespace PlayerControls
         private void Awake()
         {
             i = this;
+        }
+
+        private void OnEnable()
+        {
+            CarsReplaceController.OnCarReplaced += SetNewCar;
+        }
+
+        private void SetNewCar(Car newCar)
+        {
+            targetCar = newCar;
+        }
+
+        private void OnDisable()
+        {
+            CarsReplaceController.OnCarReplaced -= SetNewCar;
         }
 
         void Update()

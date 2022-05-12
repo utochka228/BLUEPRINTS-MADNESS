@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using PlayerControls;
 
 namespace Cars.ActionsOnVehicle
 {
@@ -10,18 +8,15 @@ namespace Cars.ActionsOnVehicle
     {
         public static CarsReplaceController i;
         [SerializeField] Camera camera;
-        [SerializeField] CinemachineVirtualCamera virtualCamera;
-        public Car CurrentControlledCar { get; set; }
-        public void ReplaceCar(Car newCar)
-        {
-            // Change car instance
-            if (CurrentControlledCar != newCar)
-                CurrentControlledCar = newCar;
 
-            CarControl.i.targetCar = newCar;
-            // Change UI controls
-            // Focus camera to new car
-            virtualCamera.Follow = newCar.transform;
+        public delegate void CarReplaced(Car newCar);
+        public static event CarReplaced OnCarReplaced;
+        public static void ReplaceCar(Car newCar)
+        {
+            if (newCar == null)
+                return;
+
+            OnCarReplaced?.Invoke(newCar);
             Debug.Log("Car replaced. New car name " + newCar.CarName);
         }
 

@@ -18,6 +18,9 @@ namespace Cars
         public CarMover CarMover;
         public string CarName;
 
+        [SerializeField] float fuelConsumption;
+        float currentFuelCount;
+
         [SerializeField]
         protected float interactableRadius = 5f;
         // Interaction with IInteractable logic
