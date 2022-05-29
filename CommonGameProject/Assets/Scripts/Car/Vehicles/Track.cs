@@ -9,7 +9,7 @@ namespace Cars.VehicleList
 {
     public class Track : Car, IResourcesLoaderFeature
     {
-        private CarStorage storage;
+        private VehicleStorage storage;
         public void LoadItem(Resource resource)
         {
             
