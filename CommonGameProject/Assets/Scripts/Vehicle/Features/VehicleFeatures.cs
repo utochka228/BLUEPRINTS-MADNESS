@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.Features
+namespace Vehicle.Features
 {
     namespace LoadingItems
     {

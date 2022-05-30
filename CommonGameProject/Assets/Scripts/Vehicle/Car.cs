@@ -1,11 +1,11 @@
-using Cars.Features;
-using Cars.Movement;
+using Vehicle.Features;
+using Vehicle.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Cars
+namespace Vehicle
 {
     public abstract class Car : MonoBehaviour
     {

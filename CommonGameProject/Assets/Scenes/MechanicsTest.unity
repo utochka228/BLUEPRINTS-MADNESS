@@ -377,7 +377,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.321474, y: 1}
+    m_SensorSize: {x: 1.3131313, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -536,6 +536,7 @@ MonoBehaviour:
   brakePower: 3223
   CarMover: {fileID: 215338157}
   CarName: Track
+  fuelConsumption: 0
   interactableRadius: 5
 --- !u!1 &217578928
 GameObject:
@@ -876,7 +877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  virtualCamera: {fileID: 95229589}
 --- !u!4 &484462511
 Transform:
   m_ObjectHideFlags: 0
@@ -1416,6 +1416,7 @@ MonoBehaviour:
   brakePower: 2323
   CarMover: {fileID: 804062608}
   CarName: Jeep
+  fuelConsumption: 0
   interactableRadius: 5
 --- !u!1001 &854976345
 PrefabInstance:
@@ -2177,6 +2178,7 @@ MonoBehaviour:
   brakePower: 232323
   CarMover: {fileID: 1427891478}
   CarName: Sedan
+  fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &1427891478
 MonoBehaviour:

@@ -1,6 +1,6 @@
-using Cars;
-using Cars.ActionsOnVehicle;
-using Cars.Movement;
+using Vehicle;
+using Vehicle.ActionsOnVehicle;
+using Vehicle.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

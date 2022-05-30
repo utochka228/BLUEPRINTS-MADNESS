@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.Movement
+namespace Vehicle.Movement
 {
     public enum Axel
     {
