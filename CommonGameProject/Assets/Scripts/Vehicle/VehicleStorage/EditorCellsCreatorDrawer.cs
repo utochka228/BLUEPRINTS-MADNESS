@@ -1,3 +1,4 @@
+using GameDataUtils.DataWireClass;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,8 +11,10 @@ namespace Vehicle.Storage.CellsCreator
     public class EditorCellsCreatorDrawer : Editor
     {
         CellsStorageCreator StorageCreator;
-        Cell[,] temporaryCellsWire;
+        DataWire<Cell> temporaryCellsWire;
         Vector3 offsetFromZeroPoint;
+
+        bool needsRepaint;
 
         private void OnEnable()
         {
@@ -19,6 +22,8 @@ namespace Vehicle.Storage.CellsCreator
         }
         private void OnSceneGUI()
         {
+            Event guiEvent = Event.current;
+
             if (StorageCreator == null)
                 return;
             if (StorageCreator.targetVehicle == null)
@@ -26,12 +31,21 @@ namespace Vehicle.Storage.CellsCreator
             if (StorageCreator.targetVehicleStorage == null)
                 return;
 
-            //if (StorageCreator.targetVehicleStorage.cells == null)
-            //    CreateNewCellsWire();
-            //else
-            //    ProcessExistingCellsWire();
+            if (temporaryCellsWire == null)
+                CreateNewCellsWire();
 
             DrawCellsWire();
+
+            if (needsRepaint)
+            {
+                HandleUtility.Repaint();
+                needsRepaint = false;
+            }
+
+            if (guiEvent.type == EventType.Layout)
+            {
+                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+            }
         }
         static float CELLS_UNIT_SIZE => CellsStorageCreator.instance.CELLS_UNIT_SIZE;
         private void DrawCellsWire()
@@ -39,34 +53,41 @@ namespace Vehicle.Storage.CellsCreator
             if (temporaryCellsWire == null)
                 return;
 
-            for (int x = 0; x < temporaryCellsWire.GetLength(0); x++)
+            for (int x = 0; x < temporaryCellsWire.RowLength; x++)
             {
-                for (int y = 0; y < temporaryCellsWire.GetLength(1); y++)
+                for (int y = 0; y < temporaryCellsWire.ColumnLength; y++)
                 {
                     var cell = temporaryCellsWire[x, y];
                     if (cell.exist)
                     {
-                        var verts = new Vector3[]
-                        {
-                            new Vector3(cell.localPosition.x - CELLS_UNIT_SIZE, cell.localPosition.y, cell.localPosition.z - CELLS_UNIT_SIZE) + offsetFromZeroPoint,
-                            new Vector3(cell.localPosition.x - CELLS_UNIT_SIZE, cell.localPosition.y, cell.localPosition.z + CELLS_UNIT_SIZE) + offsetFromZeroPoint,
-                            new Vector3(cell.localPosition.x + CELLS_UNIT_SIZE, cell.localPosition.y, cell.localPosition.z + CELLS_UNIT_SIZE) + offsetFromZeroPoint,
-                            new Vector3(cell.localPosition.x + CELLS_UNIT_SIZE, cell.localPosition.y, cell.localPosition.z - CELLS_UNIT_SIZE) + offsetFromZeroPoint
-                        };
-                        Handles.DrawSolidRectangleWithOutline(verts, Color.yellow, Color.black);
+                        DrawCell(cell);
                     }
                 }
             }
         }
 
-        private void CreateNewCellsWire()
+        private void DrawCell(Cell cell)
         {
-
+            var worldPos = StorageCreator.targetVehicle.transform.TransformPoint(cell.localPosition);
+            var verts = new Vector3[]
+            {
+                new Vector3(worldPos.x - CELLS_UNIT_SIZE, worldPos.y, worldPos.z - CELLS_UNIT_SIZE) + offsetFromZeroPoint,
+                new Vector3(worldPos.x - CELLS_UNIT_SIZE, worldPos.y, worldPos.z + CELLS_UNIT_SIZE) + offsetFromZeroPoint,
+                new Vector3(worldPos.x + CELLS_UNIT_SIZE, worldPos.y, worldPos.z + CELLS_UNIT_SIZE) + offsetFromZeroPoint,
+                new Vector3(worldPos.x + CELLS_UNIT_SIZE, worldPos.y, worldPos.z - CELLS_UNIT_SIZE) + offsetFromZeroPoint
+            };
+            Handles.DrawSolidRectangleWithOutline(verts, Color.yellow, Color.black);
         }
 
-        private void ProcessExistingCellsWire()
+        private void CreateNewCellsWire()
         {
-
+            if (StorageCreator.targetVehicleStorage.cells == null)
+            {
+                temporaryCellsWire = new DataWire<Cell>(1, 1);
+                temporaryCellsWire[0, 0] = new Cell() { exist = true, localPosition = Vector3.zero };
+            }
+            //else // Form datawire based on stored cells
+             //   temporaryCellsWire = StorageCreator.targetVehicleStorage.cells;
         }
     }
 }
