@@ -377,7 +377,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.310606, y: 1}
+    m_SensorSize: {x: 1.3089533, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4209b113a3dd4294db1559434c84f150, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.535769
+      value: 17.812
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4209b113a3dd4294db1559434c84f150, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2428,6 +2428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1551325184}
+  - component: {fileID: 1551325185}
   m_Layer: 0
   m_Name: CellsCreator
   m_TagString: Untagged
@@ -2443,13 +2444,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551325182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.563126, y: 1.6487472, z: 20.7446}
+  m_LocalPosition: {x: 17.812, y: 1.4, z: 20.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551325185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551325182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c11d13cc2f9da4ab2a7c05662bcc0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CELLS_UNIT_SIZE: 0.3
+  _targetVehicleStorage: {fileID: 11400000, guid: c574f7f46e926044db31dce8590cf176, type: 2}
+  targetVehicle: {fileID: 215338155}
 --- !u!1 &1576831612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}

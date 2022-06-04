@@ -7,13 +7,7 @@ namespace Vehicle.Storage
     [CreateAssetMenu]
     public class VehicleStorageInstance : ScriptableObject
     {
-        public Cell[,] cells;
-
-    }
-
-    public struct Cell
-    {
-        public Vector3 localPosition;
-        public bool exist;
+        public CellsWireStruct cellsStruct;
+        public Vector3 localOffsetFromZero;
     }
 }
