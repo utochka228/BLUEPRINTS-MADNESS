@@ -7,6 +7,8 @@ namespace Vehicle.Storage.CellsEditorCreator
     [ExecuteInEditMode]
     public class CellsStorageCreator : MonoBehaviour
     {
+        public static CellsStorageCreator instance;
+
         public float CELLS_UNIT_SIZE = 1f;
 
         [SerializeField] VehicleStorageInstance _targetVehicleStorage;
@@ -18,6 +20,10 @@ namespace Vehicle.Storage.CellsEditorCreator
             SetVehicleStorage(null);
         }
 
+        private void OnEnable()
+        {
+            instance = this;
+        }
 
         public void SetVehicleStorage(VehicleStorageInstance storage_instance)
         {

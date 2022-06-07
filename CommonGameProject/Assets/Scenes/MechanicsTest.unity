@@ -2463,7 +2463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c11d13cc2f9da4ab2a7c05662bcc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CELLS_UNIT_SIZE: 0.3
+  CELLS_UNIT_SIZE: 0.22
   _targetVehicleStorage: {fileID: 11400000, guid: c574f7f46e926044db31dce8590cf176, type: 2}
   targetVehicle: {fileID: 215338155}
 --- !u!1 &1576831612 stripped

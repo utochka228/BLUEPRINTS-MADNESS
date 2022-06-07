@@ -1,13 +1,31 @@
 ﻿using UnityEngine;
+using Utils;
+using Utils.CellVertices;
 using Utils.Convertor;
+using Vehicle.Storage.CellsEditorCreator;
 using Vehicle.Storage.Data;
 
 namespace Vehicle.Storage
 {
     public struct Cell
     {
-        public Vector3 localPosition;
         public bool exist;
+
+        public Color GetColor()
+        {
+            if (exist)
+            {
+                Color fillColor = Color.yellow;
+                fillColor.a = 0.5f;
+                return fillColor;
+            }
+            else
+            {
+                Color fillColor = Color.grey;
+                fillColor.a = 0.5f;
+                return fillColor;
+            }
+        }
     }
 
     public struct CellsWireStruct : IConvertable<CellsWire>
@@ -23,7 +41,16 @@ namespace Vehicle.Storage
             {
                 for (int y = 0; y < yLength; y++)
                 {
-                    cellsWire[x, y] = cells[x, y];
+                    cellsWire[x, y] = new WireCell()
+                    {
+                        isExist = cells[x, y].exist,
+                        verts = VerticesUtils.GetVertices(new DrawingCellsParams() {
+                            coords = new Vector2(x, y),
+                            targetVehicle = CellsStorageCreator.instance.targetVehicle.transform,
+                            cells_unit_size = CellsStorageCreator.instance.CELLS_UNIT_SIZE,
+                            offsetFromZeroPoint = CellsStorageCreator.instance.targetVehicleStorage.localOffsetFromZero,
+                            fillColor = cells[x, y].GetColor()
+                    })};
                 }
             }
             return cellsWire;
