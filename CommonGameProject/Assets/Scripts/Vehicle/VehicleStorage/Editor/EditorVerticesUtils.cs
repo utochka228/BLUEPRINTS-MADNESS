@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vehicle.Storage.CellsEditorCreator;
 
 namespace Utils
 {
     public class EditorVerticesUtils
     {
-        public static Vector3[] GetVertices(Vector2 coords, Transform targetVehicle, float CELLS_UNIT_SIZE, Vector3 zeroPointOffset)
+        public static Vector3[] GetVertices(DrawingCellsParams drawingCellsParams )
         {
-            var worldPos = targetVehicle.TransformPoint(Vector3.zero);
+            var worldPos = CellsWireHandler.GetPosByCoords(drawingCellsParams.coords);
+            var CELLS_UNIT_SIZE = drawingCellsParams.cells_unit_size;
+            var zeroPointOffset = drawingCellsParams.offsetFromZeroPoint;
             var verts = new Vector3[]
             {
-            new Vector3(worldPos.x - CELLS_UNIT_SIZE * coords.x, worldPos.y, worldPos.z - CELLS_UNIT_SIZE * coords.y) + zeroPointOffset,
-            new Vector3(worldPos.x - CELLS_UNIT_SIZE * coords.x, worldPos.y, worldPos.z + CELLS_UNIT_SIZE * coords.y) + zeroPointOffset,
-            new Vector3(worldPos.x + CELLS_UNIT_SIZE * coords.x, worldPos.y, worldPos.z + CELLS_UNIT_SIZE * coords.y) + zeroPointOffset,
-            new Vector3(worldPos.x + CELLS_UNIT_SIZE * coords.x, worldPos.y, worldPos.z - CELLS_UNIT_SIZE * coords.y) + zeroPointOffset
+            new Vector3(worldPos.x - CELLS_UNIT_SIZE, worldPos.y, worldPos.z - CELLS_UNIT_SIZE) + zeroPointOffset,
+            new Vector3(worldPos.x - CELLS_UNIT_SIZE, worldPos.y, worldPos.z + CELLS_UNIT_SIZE) + zeroPointOffset,
+            new Vector3(worldPos.x + CELLS_UNIT_SIZE, worldPos.y, worldPos.z + CELLS_UNIT_SIZE) + zeroPointOffset,
+            new Vector3(worldPos.x + CELLS_UNIT_SIZE, worldPos.y, worldPos.z - CELLS_UNIT_SIZE) + zeroPointOffset
             };
             return verts;
         }
@@ -26,19 +29,14 @@ namespace Utils
         // caused overflow problems)
         static int INF = 10000;
 
-        class Point
+        public class Point
         {
-            public int x;
-            public int y;
-            public Point(int x, int y)
+            public float x;
+            public float y;
+            public Point(float x, float y)
             {
                 this.x = x;
                 this.y = y;
-            }
-            public Point(Vector2Int coords)
-            {
-                x = coords.x;
-                y = coords.y;
             }
         };
 
@@ -64,7 +62,7 @@ namespace Utils
         // 2 --> Counterclockwise
         static int orientation(Point p, Point q, Point r)
         {
-            int val = (q.y - p.y) * (r.x - q.x) -
+            float val = (q.y - p.y) * (r.x - q.x) -
                     (q.x - p.x) * (r.y - q.y);
 
             if (val == 0)
@@ -127,7 +125,7 @@ namespace Utils
 
         // Returns true if the point p lies
         // inside the polygon[] with n vertices
-        static bool isInside(Point[] polygon, int n, Point p)
+        public static bool isInside(Point[] polygon, int n, Point p)
         {
             // There must be at least 3 vertices in polygon[]
             if (n < 3)

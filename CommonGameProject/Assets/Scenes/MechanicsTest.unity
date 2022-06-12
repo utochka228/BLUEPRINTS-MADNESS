@@ -2475,7 +2475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551325182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.95, y: 1.4, z: 13.8}
+  m_LocalPosition: {x: 16.95, y: 2.11, z: 13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2494,7 +2494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c11d13cc2f9da4ab2a7c05662bcc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CELLS_UNIT_SIZE: 1.05
+  CELLS_UNIT_SIZE: 0.33
   _targetVehicleStorage: {fileID: 11400000, guid: c574f7f46e926044db31dce8590cf176, type: 2}
   targetVehicle: {fileID: 215338155}
 --- !u!1 &1576831612 stripped

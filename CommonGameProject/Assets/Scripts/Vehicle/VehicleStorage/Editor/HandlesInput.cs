@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Utils;
+using static Utils.PolygonUtils;
 
 namespace Vehicle.Storage.CellsEditorCreator
 {
@@ -31,8 +33,17 @@ namespace Vehicle.Storage.CellsEditorCreator
                 for (int y = 0; y < columnLenth; y++)
                 {
                     var cell = cellsDrawer.temporaryCellsWire[x, y];
-                    var square = cell.verts[0] + cell.verts[1] + cell.verts[2] + cell.verts[3];
-                    
+                    var verts = EditorVerticesUtils.GetVertices(new DrawingCellsParams(cellsDrawer, new Vector2Int(x, y)));
+                    var points = new Point[] { 
+                        new Point(verts[0].x, verts[0].z),
+                        new Point(verts[1].x, verts[1].z),
+                        new Point(verts[2].x, verts[2].z),
+                        new Point(verts[3].x, verts[3].z)
+                    };
+                    if (isInside(points, 4, new Point(sceneMousePosition.x, sceneMousePosition.z)))
+                    {
+
+                    }
                 }
             }
         }

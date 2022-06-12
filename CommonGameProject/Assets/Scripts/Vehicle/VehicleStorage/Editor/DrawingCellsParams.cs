@@ -9,9 +9,9 @@ namespace Vehicle.Storage.CellsEditorCreator
         public float cells_unit_size;
         public Vector3 offsetFromZeroPoint;
         public Transform targetVehicle;
-        public Vector2 coords;
+        public Vector2Int coords;
 
-        public DrawingCellsParams(EditorSceneCellsCreator instance, Vector2 coords)
+        public DrawingCellsParams(EditorSceneCellsCreator instance, Vector2Int coords)
         {
             cells_unit_size = instance.CELLS_UNIT_SIZE;
             offsetFromZeroPoint = instance.offsetFromZeroPoint;
