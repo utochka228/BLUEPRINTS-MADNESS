@@ -10,7 +10,13 @@ namespace Vehicle.Storage.Data
 
         public CellsWire(int x_Count, int y_Count) : base(x_Count, y_Count)
         {
-
+            for (int x = 0; x < x_Count; x++)
+            {
+                for (int y = 0; y < y_Count; y++)
+                {
+                    data_table[x, y] = new WireCell();
+                }
+            }
         }
 
         public CellsWireStruct ConvertTo()

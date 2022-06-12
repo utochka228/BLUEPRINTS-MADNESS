@@ -7,7 +7,7 @@ namespace Vehicle.Storage.CellsEditorCreator
 {
     public class HandlesInput
     {
-        private Vector3 sceneMousePosition;
+        static Vector3 sceneMousePosition;
         public static void ProcessInput(EditorSceneCellsCreator cellsDrawer, Event guiEvent)
         {
             ProcessMousePosition(guiEvent.mousePosition, cellsDrawer.WireHeightInScene);
@@ -32,7 +32,7 @@ namespace Vehicle.Storage.CellsEditorCreator
                 {
                     var cell = cellsDrawer.temporaryCellsWire[x, y];
                     var square = cell.verts[0] + cell.verts[1] + cell.verts[2] + cell.verts[3];
-                    if(sceneMousePosition)
+                    
                 }
             }
         }

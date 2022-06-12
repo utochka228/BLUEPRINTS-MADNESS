@@ -97,7 +97,7 @@ namespace Vehicle.Storage.CellsEditorCreator
 
         private void DrawCell(Vector2 coords, Color fillColor)
         {
-            var verts = VerticesUtils.GetVertices(coords, StorageCreator.targetVehicle.transform, CELLS_UNIT_SIZE, offsetFromZeroPoint);
+            var verts = EditorVerticesUtils.GetVertices(coords, StorageCreator.targetVehicle.transform, CELLS_UNIT_SIZE, offsetFromZeroPoint);
 
             Vector3 plane = Vector3.zero;
             for (int i = 0; i < verts.Length; i++)
@@ -120,7 +120,7 @@ namespace Vehicle.Storage.CellsEditorCreator
                     {
                         temporaryCellsWire[x, y] = new WireCell() { 
                             isExist = false, 
-                            verts = VerticesUtils.GetVertices(new Vector2(x, y), 
+                            verts = EditorVerticesUtils.GetVertices(new Vector2(x, y), 
                             StorageCreator.targetVehicle.transform, CELLS_UNIT_SIZE, offsetFromZeroPoint), 
                             cellColor = Color.grey 
                         };
