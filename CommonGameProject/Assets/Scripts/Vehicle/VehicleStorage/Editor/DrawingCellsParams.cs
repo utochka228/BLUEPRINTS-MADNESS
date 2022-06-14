@@ -11,7 +11,7 @@ namespace Vehicle.Storage.CellsEditorCreator
         public Transform targetVehicle;
         public Vector2Int coords;
 
-        public DrawingCellsParams(EditorSceneCellsCreator instance, Vector2Int coords)
+        public DrawingCellsParams(EditorCellsCreator instance, Vector2Int coords)
         {
             cells_unit_size = instance.CELLS_UNIT_SIZE;
             offsetFromZeroPoint = instance.offsetFromZeroPoint;
@@ -27,7 +27,7 @@ namespace Vehicle.Storage.CellsEditorCreator
         public float cells_unit_size;
         public Vector3 offsetFromZeroPoint;
 
-        public DrawingWireParams(EditorSceneCellsCreator instance)
+        public DrawingWireParams(EditorCellsCreator instance)
         {
             cells_unit_size = instance.CELLS_UNIT_SIZE;
             RowLength = instance.temporaryCellsWire.RowLength;

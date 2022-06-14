@@ -10,6 +10,7 @@ namespace Vehicle.Storage.CellsEditorCreator
         public static CellsStorageCreator instance;
 
         public float CELLS_UNIT_SIZE = 1f;
+        public float ManipulatorsDistance = 0.1f;
 
         [SerializeField] VehicleStorageInstance _targetVehicleStorage;
         public VehicleStorageInstance targetVehicleStorage { get => _targetVehicleStorage; }

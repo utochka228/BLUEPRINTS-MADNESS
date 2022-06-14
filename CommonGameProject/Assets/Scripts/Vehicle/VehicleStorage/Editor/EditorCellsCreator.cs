@@ -8,25 +8,37 @@ using Vehicle.Storage.Data;
 namespace Vehicle.Storage.CellsEditorCreator
 {
     [CustomEditor(typeof(CellsStorageCreator))]
-    public class EditorSceneCellsCreator : Editor
+    public class EditorCellsCreator : Editor
     {
+        public static EditorCellsCreator instance;
+
+        public ColorScheme ColorScheme;
         public CellsStorageCreator StorageCreator;
         public CellsWire temporaryCellsWire;
         public Vector3 offsetFromZeroPoint;
         public float WireHeightInScene => (StorageCreator.targetVehicle.transform.TransformPoint(Vector3.zero) + offsetFromZeroPoint).y;
 
-        bool needsRepaint;
+        public bool needsRepaint;
         public float CELLS_UNIT_SIZE => StorageCreator.CELLS_UNIT_SIZE;
+
+        HandlesInput[] inputClasses = new HandlesInput[] { new CellswireInput(), new ManipulatorsInput() };
 
         private void OnEnable()
         {
-            StorageCreator = target as CellsStorageCreator;
             EditorDrawerBase.EditorInstance = this;
+            instance = this;
+
+            StorageCreator = target as CellsStorageCreator;
+
+            ColorScheme = ColorScheme.CreateAsset();
         }
         private void OnSceneGUI()
         {
             if (EditorDrawerBase.EditorInstance == null)
                 EditorDrawerBase.EditorInstance = this;
+
+            if (instance == null)
+                instance = this;
 
             Event guiEvent = Event.current;
 
@@ -52,7 +64,10 @@ namespace Vehicle.Storage.CellsEditorCreator
             }
             else
             {
-                HandlesInput.ProcessInput(this, guiEvent);
+                for (int i = 0; i < inputClasses.Length; i++)
+                {
+                    inputClasses[i].ProcessInput(this, guiEvent);
+                }
                 if (needsRepaint)
                 {
                     HandleUtility.Repaint();

@@ -3,49 +3,44 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Utils;
-using static Utils.PolygonUtils;
 
 namespace Vehicle.Storage.CellsEditorCreator
 {
     public class HandlesInput
     {
-        static Vector3 sceneMousePosition;
-        public static void ProcessInput(EditorSceneCellsCreator cellsDrawer, Event guiEvent)
+        protected static Vector3 sceneMousePosition;
+        protected Event guiEvent;
+        protected EditorCellsCreator cellsCreator;
+        
+        public virtual void ProcessInput(EditorCellsCreator cellsDrawer, Event _guiEvent)
         {
+            guiEvent = _guiEvent;
+            cellsCreator = cellsDrawer;
             ProcessMousePosition(guiEvent.mousePosition, cellsDrawer.WireHeightInScene);
-            if (guiEvent.type == EventType.MouseMove)
+
+            if(guiEvent.type == EventType.MouseMove && guiEvent.modifiers == EventModifiers.None)
             {
-                UpdateMouseOverSelection(cellsDrawer);
+                HandleMouseMove();
+            }
+            if(guiEvent.type == EventType.MouseDown && guiEvent.button == 0 && guiEvent.modifiers == EventModifiers.None)
+            {
+                HandleLeftMouseClick();
+            }
+            if(guiEvent.type == EventType.MouseDrag && guiEvent.button == 0 && guiEvent.modifiers == EventModifiers.None)
+            {
+                HandleLeftMouseDrag();
             }
         }
-        private static void ProcessMousePosition(Vector2 mousePosition, float drawPlaneHeight)
+
+        private void ProcessMousePosition(Vector2 mousePosition, float drawPlaneHeight)
         {
             Ray mouseRay = HandleUtility.GUIPointToWorldRay(mousePosition);
             float dstToDrawPlane = (drawPlaneHeight - mouseRay.origin.y) / mouseRay.direction.y;
             sceneMousePosition = mouseRay.GetPoint(dstToDrawPlane);
         }
-        private static void UpdateMouseOverSelection(EditorSceneCellsCreator cellsDrawer)
-        {
-            var rowLenth = cellsDrawer.temporaryCellsWire.RowLength;
-            var columnLenth = cellsDrawer.temporaryCellsWire.ColumnLength;
-            for (int x = 0; x < rowLenth; x++)
-            {
-                for (int y = 0; y < columnLenth; y++)
-                {
-                    var cell = cellsDrawer.temporaryCellsWire[x, y];
-                    var verts = EditorVerticesUtils.GetVertices(new DrawingCellsParams(cellsDrawer, new Vector2Int(x, y)));
-                    var points = new Point[] { 
-                        new Point(verts[0].x, verts[0].z),
-                        new Point(verts[1].x, verts[1].z),
-                        new Point(verts[2].x, verts[2].z),
-                        new Point(verts[3].x, verts[3].z)
-                    };
-                    if (isInside(points, 4, new Point(sceneMousePosition.x, sceneMousePosition.z)))
-                    {
 
-                    }
-                }
-            }
-        }
+        public virtual void HandleMouseMove() { }
+        public virtual void HandleLeftMouseClick() { }
+        public virtual void HandleLeftMouseDrag() { }
     }
 }

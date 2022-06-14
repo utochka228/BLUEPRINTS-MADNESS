@@ -42,21 +42,5 @@ namespace Vehicle.Storage.Data
         public bool isExist;
         public Color cellColor;
         public Vector3[] verts;
-
-        public Color GetColor()
-        {
-            if (isExist)
-            {
-                Color fillColor = Color.yellow;
-                fillColor.a = 0.5f;
-                return fillColor;
-            }
-            else
-            {
-                Color fillColor = Color.grey;
-                fillColor.a = 0.5f;
-                return fillColor;
-            }
-        }
     }
 }

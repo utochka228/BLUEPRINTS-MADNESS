@@ -6,6 +6,6 @@ namespace Vehicle.Storage.CellsEditorCreator
 {
     public class EditorDrawerBase
     {
-        public static EditorSceneCellsCreator EditorInstance;
+        public static EditorCellsCreator EditorInstance;
     }
 }
