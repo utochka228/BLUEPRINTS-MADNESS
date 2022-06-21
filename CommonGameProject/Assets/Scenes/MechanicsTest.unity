@@ -385,7 +385,7 @@ MonoBehaviour:
     ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.4035308, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -550,8 +550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enginePower: 3223
   brakePower: 3223
-  VehicleMover: {fileID: 0}
-  VehicleName: 
+  VehicleMover: {fileID: 215338157}
+  VehicleName: Track
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!1 &217578928
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 484462509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 377ddd659319cb74caaa39bcf761aa8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c2a8e9fe10f0e94781d5bd53ea2a357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
@@ -1440,7 +1440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.82
+      value: 54.55
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1448,7 +1448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.53
+      value: 45.72
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1559,8 +1559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enginePower: 3232
   brakePower: 2323
-  VehicleMover: {fileID: 0}
-  VehicleName: 
+  VehicleMover: {fileID: 804062608}
+  VehicleName: Jeep
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!1001 &854976345
@@ -2677,8 +2677,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enginePower: 32323
   brakePower: 232323
-  VehicleMover: {fileID: 0}
-  VehicleName: 
+  VehicleMover: {fileID: 1427891478}
+  VehicleName: Sedan
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &1427891478
@@ -3323,7 +3323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cf4df0124344f4aa366fe7838ba209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCar: {fileID: 0}
+  targetVehicle: {fileID: 0}
 --- !u!4 &2041968069
 Transform:
   m_ObjectHideFlags: 0
@@ -3534,60 +3534,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdedResource: {fileID: 11400000, guid: 17844b1becb69cd42a23261c0a371f71, type: 2}
---- !u!1001 &877243442315282818
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 877243442702158648, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_Name
-      value: ReplacedVehicleTrail
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 55.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.390121
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 59.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 877243442702158654, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bba90d35554fa44f8ae0f0abf619462, type: 3}

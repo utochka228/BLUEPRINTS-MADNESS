@@ -30,13 +30,13 @@ namespace CameraSystem
 
         private void OnEnable()
         {
-            VehiclesReplaceController.OnCarReplaced += SetNewCarTarget;
+            VehiclesReplaceController.OnVehicleReplaced += SetNewCarTarget;
             OnCameraStateModeChanged += SetCameraBehaviour;
         }
 
         private void OnDisable()
         {
-            VehiclesReplaceController.OnCarReplaced -= SetNewCarTarget;
+            VehiclesReplaceController.OnVehicleReplaced -= SetNewCarTarget;
             OnCameraStateModeChanged -= SetCameraBehaviour;
         }
 
