@@ -11,7 +11,7 @@ namespace Vehicle.Features
         /// </summary>
         interface ICanbeLoaded : IInteractable
         {
-            void LoadInteraction(Car car);
+            void LoadInteraction(Vehicle car);
         }
         /// <summary>Add possibility placing items which marked ICanbeLoaded to vehicle</summary>
         interface ILoaderFeature

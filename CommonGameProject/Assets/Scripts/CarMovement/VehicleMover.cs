@@ -19,7 +19,7 @@ namespace Vehicle.Movement
         public Axel axel;
         public bool brakenWheel;
     }
-    public class CarMover : MonoBehaviour
+    public class VehicleMover : MonoBehaviour
     {
         [SerializeField] Vector3 centerOfMass;
         [SerializeField] float motorForce = 20f;

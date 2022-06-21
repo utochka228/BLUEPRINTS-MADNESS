@@ -4,20 +4,21 @@ using UnityEngine;
 
 namespace Vehicle.ActionsOnVehicle
 {
-    public class CarsReplaceController : MonoBehaviour
+    public class VehiclesReplaceController : MonoBehaviour
     {
-        public static CarsReplaceController i;
+        public static VehiclesReplaceController i;
         [SerializeField] Camera camera;
+        [SerializeField] GameObject replacedVehicleTrail;
 
-        public delegate void CarReplaced(Car newCar);
+        public delegate void CarReplaced(Vehicle newCar);
         public static event CarReplaced OnCarReplaced;
-        public static void ReplaceCar(Car newCar)
+        public static void ReplaceVehicle(Vehicle newVehicle)
         {
-            if (newCar == null)
+            if (newVehicle == null)
                 return;
 
-            OnCarReplaced?.Invoke(newCar);
-            Debug.Log("Car replaced. New car name " + newCar.CarName);
+            OnCarReplaced?.Invoke(newVehicle);
+            Debug.Log("Car replaced. New car name " + newVehicle.VehicleName);
         }
 
         private void Awake()
@@ -38,10 +39,10 @@ namespace Vehicle.ActionsOnVehicle
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    var car = hit.transform.GetComponent<Car>();
+                    var car = hit.transform.GetComponent<Vehicle>();
                     if (car != null)
                     {
-                        ReplaceCar(car);
+                        ReplaceVehicle(car);
                     }
                 }
             

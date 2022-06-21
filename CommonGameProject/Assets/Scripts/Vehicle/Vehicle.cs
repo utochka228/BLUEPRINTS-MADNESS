@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Vehicle
 {
-    public abstract class Car : MonoBehaviour
+    public abstract class Vehicle : MonoBehaviour
     {
         // General common parameters
         [SerializeField]
@@ -15,8 +15,8 @@ namespace Vehicle
         [SerializeField]
         protected float brakePower;
         [SerializeField]
-        public CarMover CarMover;
-        public string CarName;
+        public VehicleMover VehicleMover;
+        public string VehicleName;
 
         [SerializeField] float fuelConsumption;
         float currentFuelCount;

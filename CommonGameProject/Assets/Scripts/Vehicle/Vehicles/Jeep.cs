@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Vehicle.VehicleList
 {
-    public class Jeep : Car
+    public class Jeep : Vehicle
     {
         protected override void OnInteractedWithSmth(List<Collider> interactedItems)
         {

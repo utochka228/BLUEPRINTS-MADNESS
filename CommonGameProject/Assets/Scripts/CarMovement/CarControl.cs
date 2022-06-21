@@ -10,7 +10,7 @@ namespace PlayerControls
     public class CarControl : MonoBehaviour
     {
         public static CarControl i;
-        public Car targetCar;
+        public Vehicle.Vehicle targetCar;
 
         private void Awake()
         {
@@ -19,17 +19,17 @@ namespace PlayerControls
 
         private void OnEnable()
         {
-            CarsReplaceController.OnCarReplaced += SetNewCar;
+            VehiclesReplaceController.OnCarReplaced += SetNewCar;
         }
 
-        private void SetNewCar(Car newCar)
+        private void SetNewCar(Vehicle.Vehicle newCar)
         {
             targetCar = newCar;
         }
 
         private void OnDisable()
         {
-            CarsReplaceController.OnCarReplaced -= SetNewCar;
+            VehiclesReplaceController.OnCarReplaced -= SetNewCar;
         }
 
         void Update()
@@ -40,19 +40,19 @@ namespace PlayerControls
             if (Input.GetKeyDown(KeyCode.E))
                 targetCar.Interact();
 
-            targetCar.CarMover.GetInputs();
+            targetCar.VehicleMover.GetInputs();
 
-            targetCar.CarMover.AnimateWheels();
-            targetCar.CarMover.SnapTrailsWheelsPos();
+            targetCar.VehicleMover.AnimateWheels();
+            targetCar.VehicleMover.SnapTrailsWheelsPos();
         }
         private void FixedUpdate()
         {
             if (targetCar == null)
                 return;
 
-            targetCar.CarMover.Move();
-            targetCar.CarMover.Turn();
-            targetCar.CarMover.Brake();
+            targetCar.VehicleMover.Move();
+            targetCar.VehicleMover.Turn();
+            targetCar.VehicleMover.Brake();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Resources
             // Do nothing
         }
 
-        public void LoadInteraction(Car car)
+        public void LoadInteraction(Vehicle.Vehicle car)
         {
             
         }
