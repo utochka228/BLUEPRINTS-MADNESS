@@ -48,7 +48,6 @@ namespace CameraSystem
         private void Update()
         {
             Move();
-            Rotate();
         }
 
         private void SetCameraBehaviour(CameraStateModes oldState, CameraStateModes newState)
@@ -60,6 +59,7 @@ namespace CameraSystem
         {
             CurrentCarTarget = newCar;
             virtualCamera.Follow = newCar.transform;
+            virtualCamera.
         }
 
         public static void ChangeCameraState(CameraStateModes newState)

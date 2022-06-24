@@ -39,12 +39,18 @@ namespace Vehicle.ActionsOnVehicle
         public void MoveTrail()
         {
             var renderer = createdTrail.GetComponent<LineRenderer>();
-            var speed = speedPerMeter * (from.position - to.position).magnitude;
 
-            createdCircle.transform.LeanScale(Vector3.one * 6f, 1f).setEaseShake().setOnComplete(() => {
+            var mat = createdCircle.GetComponent<Renderer>().material;
+            var color = mat.GetColor("_BaseColor");
+            LeanTween.color(createdCircle, new Color(color.r, color.g, color.b, 0f), .6f).setOnUpdateColor(
+            (newColor) =>
+            {
+                mat.SetColor("_BaseColor", newColor);
+            });
+            createdCircle.transform.LeanScale(Vector3.one * 6f, 2f).setEaseShake().setOnComplete(() => {
                 GameObject.Destroy(createdCircle);
             });
-            LeanTween.value(createdTrail, from.position, to.position, speed).setOnUpdateVector3(newPos => {
+            LeanTween.value(createdTrail, from.position, to.position, speedPerMeter).setOnUpdateVector3(newPos => {
                 renderer.SetPosition(0, from.position);
                 renderer.SetPosition(1, newPos);
             }).setEaseInOutSine().setOnComplete(() => GameObject.Destroy(createdTrail));

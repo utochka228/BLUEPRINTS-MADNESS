@@ -8,7 +8,7 @@ namespace Vehicle.ActionsOnVehicle
     public class VehiclesReplaceController : MonoBehaviour
     {
         public static VehiclesReplaceController i;
-        [SerializeField] Camera camera;
+        [SerializeField] Camera orthoCamera;
 
         public delegate void CarReplaced(Vehicle newCar);
         public static event CarReplaced OnVehicleReplaced;
@@ -29,7 +29,7 @@ namespace Vehicle.ActionsOnVehicle
             {
                 var from = VehicleControl.GetTargetVehicle.transform;
                 var to = newVehicle.transform;
-                new VehicleRepTrail(from, to, 0.05f);
+                new VehicleRepTrail(from, to, 0.5f);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Vehicle.ActionsOnVehicle
 
         private void SelectCar()
         {
-            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            var ray = orthoCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100000f))
             {
