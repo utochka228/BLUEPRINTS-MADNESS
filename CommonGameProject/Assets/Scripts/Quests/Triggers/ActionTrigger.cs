@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace QuestsSystem
 {
-    public class ReachingTrigger : QuestTrigger
+    public class ActionTrigger : QuestTrigger
     {
-        public GoalBehaviour goalBehaviour;
-        public override void OnQuestTrigger()
+        public override void OnQuestTriggered()
         {
             
         }

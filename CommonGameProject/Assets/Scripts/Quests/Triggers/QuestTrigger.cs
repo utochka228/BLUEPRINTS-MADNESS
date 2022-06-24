@@ -7,10 +7,26 @@ namespace QuestsSystem
 {
     public abstract class QuestTrigger : MonoBehaviour, IInteractable
     {
+        public string TaskKeyname;
+        public bool DestroyTriggerAfterTriggered;
+        public bool DestroyObjAfterTriggered;
+        public bool InteractByFinger;
         public void Interact()
         {
-            OnQuestTrigger();
+            if (InteractByFinger == false)
+                return;
+
+            OnQuestTriggered();
+            if (DestroyObjAfterTriggered)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            if (DestroyTriggerAfterTriggered)
+            {
+                Destroy(this);
+            }
         }
-        public abstract void OnQuestTrigger();
+        public abstract void OnQuestTriggered();
     }
 }

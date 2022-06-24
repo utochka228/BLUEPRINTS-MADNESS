@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb62e4d3cf7552468fa425d1fb2db32, type: 3}
   m_Name: Simple goal
   m_EditorClassIdentifier: 
-  goalType: 0
+  ResourcesGoals: []
+  ItemsGoals: []
+  ActionNamesGoals:
+  - 
+  - 

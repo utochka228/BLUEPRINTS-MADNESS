@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace QuestsSystem
+namespace Items
 {
-    public class Quest
+    public class Item : ScriptableObject
     {
-        public QuestObject TargetQuestObject;
+        
     }
 }

@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37f78245a38a8a4bbf37d033a3b4e70, type: 3}
   m_Name: New Quest
   m_EditorClassIdentifier: 
+  QuestStages:
+  - StageName: 
+    StageIcon: {fileID: 0}
+    StageQuests:
+    - TaskKeyname: 
+      TaskTitle: 
+      TaskDescription: 
+      Goal: {fileID: 11400000, guid: f33a85b21191271459ca0f7c3df20416, type: 2}

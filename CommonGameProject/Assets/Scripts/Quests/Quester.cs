@@ -8,12 +8,23 @@ namespace QuestsSystem
     public class Quester : MonoBehaviour
     {
         public static Quester instance;
+        public delegate void QuestReady(Quest levelQuest);
+        public static event QuestReady OnLevelQuestReady;
 
         public delegate void QuestUpdates();
         public event QuestUpdates OnQuestUpdated;
 
+        public delegate void StageChanged(StageQuest newStage);
+        public static event StageChanged OnLevelStageChanged;
+
         private Quest LevelQuest;
         private Queue<StageQuest> StageQueue;
+
+        private void Start()
+        {
+            if (LevelQuest != null)
+                OnLevelQuestReady?.Invoke(LevelQuest);
+        }
 
         public void SetLevelQuest(Quest levelQuest)
         {
@@ -28,7 +39,8 @@ namespace QuestsSystem
         public void PassStage()
         {
             StageQueue.Dequeue();
-            if(StageQueue.Count == 0)
+            OnLevelStageChanged?.Invoke(StageQueue.Peek());
+            if (StageQueue.Count == 0)
             {
                 Debug.Log("Level end!");
             }
