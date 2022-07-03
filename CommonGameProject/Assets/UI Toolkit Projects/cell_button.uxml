@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Button display-tooltip-when-elided="true" name="cell_button" style="width: auto; height: auto; min-width: 30px; min-height: 30px; max-width: 30px; max-height: 30px;" />
+</ui:UXML>

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Label text="Vehicle storage setup" display-tooltip-when-elided="true" style="-unity-text-align: upper-left; font-size: 20px; -unity-font-style: bold;" />
+    <uie:Vector2IntField label="Storage size" name="wire_size" />
+    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1">
+        <ui:VisualElement name="wire_holder" style="max-height: 500px;" />
+    </ui:ScrollView>
+    <ui:VisualElement name="wire_toolbox" />
+    <uie:Vector3Field label="Offset from zero" name="zero_offset" style="margin-top: 12px;" />
+</ui:UXML>

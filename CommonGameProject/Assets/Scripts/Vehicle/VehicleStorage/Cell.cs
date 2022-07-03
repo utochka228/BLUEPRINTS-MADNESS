@@ -48,7 +48,7 @@ namespace Vehicle.Storage
                             coords = new Vector2(x, y),
                             targetVehicle = CellsStorageCreator.instance.targetVehicle.transform,
                             cells_unit_size = CellsStorageCreator.instance.CELLS_UNIT_SIZE,
-                            offsetFromZeroPoint = CellsStorageCreator.instance.targetVehicleStorage.localOffsetFromZero,
+                            offsetFromZeroPoint = CellsStorageCreator.instance.targetVehicleStorage.m_localOffsetFromZero,
                             fillColor = cells[x, y].GetColor()
                     })};
                 }

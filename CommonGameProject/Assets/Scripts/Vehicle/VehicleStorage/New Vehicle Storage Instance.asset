@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11eaa66bbdde512418b4b48a73df724b, type: 3}
   m_Name: New Vehicle Storage Instance
   m_EditorClassIdentifier: 
-  localOffsetFromZero: {x: 0, y: 0, z: 0}
+  m_localOffsetFromZero: {x: -0.75850105, y: 0.71958625, z: -2.1468086}
+  cell_unit_size: 0.19
+  m_wireSize: {x: 4, y: 6}
