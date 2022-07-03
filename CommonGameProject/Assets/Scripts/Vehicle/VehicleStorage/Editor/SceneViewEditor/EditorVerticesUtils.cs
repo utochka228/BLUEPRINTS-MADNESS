@@ -7,9 +7,9 @@ namespace Utils
 {
     public class EditorVerticesUtils
     {
-        public static Vector3[] GetVertices(DrawingCellsParams drawingCellsParams )
+        public static Vector3[] GetVertices(DrawingCellsParams drawingCellsParams)
         {
-            var worldPos = CellsWireHandler.GetPosByCoords(drawingCellsParams.coords);
+            var worldPos = GetPosByCoords(drawingCellsParams.coords, drawingCellsParams.cells_unit_size, drawingCellsParams.targetVehicle);
             var CELLS_UNIT_SIZE = drawingCellsParams.cells_unit_size;
             var zeroPointOffset = drawingCellsParams.offsetFromZeroPoint;
             var verts = new Vector3[]
@@ -20,6 +20,12 @@ namespace Utils
             new Vector3(worldPos.x + CELLS_UNIT_SIZE, worldPos.y, worldPos.z - CELLS_UNIT_SIZE) + zeroPointOffset
             };
             return verts;
+        }
+        private static Vector3 GetPosByCoords(Vector2Int coords, float cells_unit_size, Transform targetVehicle)
+        {
+            var point = new Vector3(cells_unit_size * (2 * coords.x + 1), 0f, cells_unit_size * (2 * coords.y + 1));
+            var resultPos = targetVehicle.transform.TransformPoint(point);
+            return resultPos;
         }
     }
 

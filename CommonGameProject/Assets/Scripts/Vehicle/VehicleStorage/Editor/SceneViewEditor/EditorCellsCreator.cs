@@ -96,7 +96,7 @@ namespace Vehicle.Storage.CellsEditorCreator
             {
                 var cellsStruct = StorageCreator.targetVehicleStorage.cellsStruct;
                 temporaryCellsWire = TypesConverter<CellsWireStruct, CellsWire>.Convert(cellsStruct);
-                offsetFromZeroPoint = StorageCreator.targetVehicleStorage.localOffsetFromZero;
+                offsetFromZeroPoint = StorageCreator.targetVehicleStorage.m_localOffsetFromZero;
             }
         }
 
