@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Vehicle
 {
+    [RequireComponent(typeof(CarMover))]
     public abstract class Car : MonoBehaviour
     {
         // General common parameters
@@ -26,7 +27,10 @@ namespace Vehicle
         // Interaction with IInteractable logic
         //
         //
-
+        private void Awake()
+        {
+            CarMover = GetComponent<CarMover>();
+        }
         public void Interact()
         {
             var collidersInSphere = Physics.OverlapSphere(transform.position, interactableRadius);

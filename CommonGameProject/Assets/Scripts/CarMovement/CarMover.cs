@@ -19,6 +19,7 @@ namespace Vehicle.Movement
         public Axel axel;
         public bool brakenWheel;
     }
+    [RequireComponent(typeof(Rigidbody))]
     public class CarMover : MonoBehaviour
     {
         [SerializeField] Vector3 centerOfMass;
