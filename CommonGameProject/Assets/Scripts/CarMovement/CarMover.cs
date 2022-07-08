@@ -50,11 +50,10 @@ namespace Cars.Movement
                 wheel.model.transform.rotation = _rot;
             }
         }
-
-        public void GetInputs()
+        public void SendInputs(Vector2 inputVector)
         {
-            inputX = Input.GetAxis("Horizontal");
-            inputY = -Input.GetAxis("Vertical");
+            inputX = inputVector.x;
+            inputY = inputVector.y;
             SpawnBrakeTracks();
         }
 

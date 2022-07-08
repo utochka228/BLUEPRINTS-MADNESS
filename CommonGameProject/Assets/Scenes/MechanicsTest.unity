@@ -377,7 +377,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.321474, y: 1}
+    m_SensorSize: {x: 1.3127364, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -535,8 +535,26 @@ MonoBehaviour:
   enginePower: 3223
   brakePower: 3223
   CarMover: {fileID: 215338157}
+  vehicleInteractor: {fileID: 0}
   CarName: Track
+  fuelConsumption: 0
   interactableRadius: 5
+--- !u!114 &215338159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215338155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69535c9bce02bf741b2c9a9727643475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radiusInteraction: 2
 --- !u!1 &217578928
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +894,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  virtualCamera: {fileID: 95229589}
 --- !u!4 &484462511
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,8 +1432,26 @@ MonoBehaviour:
   enginePower: 3232
   brakePower: 2323
   CarMover: {fileID: 804062608}
+  vehicleInteractor: {fileID: 0}
   CarName: Jeep
+  fuelConsumption: 0
   interactableRadius: 5
+--- !u!114 &804062610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804062606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69535c9bce02bf741b2c9a9727643475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radiusInteraction: 2
 --- !u!1001 &854976345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2176,7 +2211,9 @@ MonoBehaviour:
   enginePower: 32323
   brakePower: 232323
   CarMover: {fileID: 1427891478}
+  vehicleInteractor: {fileID: 0}
   CarName: Sedan
+  fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &1427891478
 MonoBehaviour:
@@ -2229,6 +2266,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1427891480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427891476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69535c9bce02bf741b2c9a9727643475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radiusInteraction: 2
 --- !u!850595691 &1474005559
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2729,6 +2782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041968069}
   - component: {fileID: 2041968068}
+  - component: {fileID: 2041968070}
   m_Layer: 0
   m_Name: CarControl
   m_TagString: Untagged
@@ -2748,6 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cf4df0124344f4aa366fe7838ba209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicleControlChannel: {fileID: 0}
   targetCar: {fileID: 0}
 --- !u!4 &2041968069
 Transform:
@@ -2764,6 +2819,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2041968070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041968067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 272da0543606d6d4aa5daef196253bac, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96297f86-fac8-47e2-9393-26fd6ec3bbc3
+    m_ActionName: InGameMobile/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2041968068}
+        m_TargetAssemblyTypeName: PlayerControls.CarControl, Assembly-CSharp
+        m_MethodName: GetInputX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a86de3fe-8270-4741-981b-db4df17a1c71
+    m_ActionName: InGameEditor/MoveLeft[/Keyboard/a]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: InGameEditor
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2048615184
 GameObject:
   m_ObjectHideFlags: 3

@@ -1,5 +1,6 @@
 using Cars.Features;
 using Cars.Movement;
+using Interaction;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 namespace Cars
 {
+    [RequireComponent(typeof(Interactor))]
     public abstract class Car : MonoBehaviour
     {
         // General common parameters
@@ -14,8 +16,8 @@ namespace Cars
         protected float enginePower;
         [SerializeField]
         protected float brakePower;
-        [SerializeField]
         public CarMover CarMover;
+        public Interactor vehicleInteractor;
         public string CarName;
 
         [SerializeField] float fuelConsumption;
