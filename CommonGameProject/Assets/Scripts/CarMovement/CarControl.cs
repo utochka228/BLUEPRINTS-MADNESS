@@ -2,6 +2,7 @@ using Cars;
 using Cars.ActionsOnVehicle;
 using Cars.Movement;
 using InputPresets;
+using InputSystem;
 using Interaction;
 using ScriptableChannels;
 using System;
@@ -17,28 +18,62 @@ namespace PlayerControls
         [SerializeField] VehicleControlChannel vehicleControlChannel;
         [SerializeField] CarsReplaceController replaceController;
         public Car targetCar;
-        private PlayerInput playerInput;
 
+        InputAction movementAction;
         private void Awake()
         {
+            InitializeInput();
+        }
+        
+        private void InitializeInput()
+        {
             GameInput gameInput = new GameInput();
+            InputSetup.SetupInput(InputStage.Gameplay);
 #if UNITY_EDITOR
-            gameInput.InGameEditor.Movement.performed += GetInput;
+            gameInput.InGameEditor.Movement.started += MovementStarted;
+            gameInput.InGameEditor.Movement.canceled += MovementCanceled;
+            movementAction = gameInput.InGameEditor.Movement;
             gameInput.InGameEditor.Movement.Enable();
             gameInput.InGameEditor.MouseClick.started += OnMouseClicked;
+            gameInput.InGameEditor.Brake.performed += BrakeHolding;
 #endif
+        }
+
+        private void MovementCanceled(InputAction.CallbackContext obj)
+        {
+        }
+
+        private void MovementStarted(InputAction.CallbackContext obj)
+        {
+        }
+
+        private void BrakeHolding(InputAction.CallbackContext context)
+        {
+            targetCar.CarMover.SpawnBrakeTracks();
+            targetCar.CarMover.Brake();
         }
 
         private void OnMouseClicked(InputAction.CallbackContext context)
         {
             var mousePosition = Mouse.current.position;
-            Vector2 mousePos = new(mousePosition.x.ReadValue(), mousePosition.y.ReadValue());
-            replaceController.SelectCar(mousePos);
+            bool selectVehicle = false;
+#if UNITY_EDITOR
+            if(Mouse.current.leftButton.isPressed)
+                selectVehicle = true;
+#endif
+            // Process mobile logic
+            //
+            //////////
+            if (selectVehicle)
+            {
+                Vector2 mousePos = new(mousePosition.x.ReadValue(), mousePosition.y.ReadValue());
+                replaceController.SelectCar(mousePos);
+            }
         }
 
-        private void GetInput(InputAction.CallbackContext context)
+        private void SendInputs()
         {
-            var inputVector = context.ReadValue<Vector2>();
+            var inputVector = movementAction.ReadValue<Vector2>();
             if (targetCar == null)
             {
                 Debug.Log("<color=orange>Can't send inputs - target vehicle is null!</color>");
@@ -79,6 +114,7 @@ namespace PlayerControls
             if (targetCar == null)
                 return;
 
+            SendInputs();
             targetCar.CarMover.AnimateWheels();
             targetCar.CarMover.SnapTrailsWheelsPos();
         }
@@ -88,8 +124,7 @@ namespace PlayerControls
                 return;
 
             targetCar.CarMover.Move();
-            targetCar.CarMover.Turn();
-            targetCar.CarMover.Brake();
+            targetCar.CarMover.Turn(targetCar.rotatingAxel);
         }
     }
 }

@@ -20,6 +20,8 @@ namespace Cars
         public Interactor vehicleInteractor;
         public string CarName;
 
+        public Axel rotatingAxel = Axel.Front;
+
         [SerializeField] float fuelConsumption;
         float currentFuelCount;
 

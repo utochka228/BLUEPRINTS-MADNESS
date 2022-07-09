@@ -262,7 +262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &79295642
 PrefabInstance:
@@ -377,7 +377,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3127364, y: 1}
+    m_SensorSize: {x: 2.1459694, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -400,8 +400,109 @@ Transform:
   m_Children:
   - {fileID: 2048615185}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &96400112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96400115}
+  - component: {fileID: 96400113}
+  - component: {fileID: 96400116}
+  m_Layer: 0
+  m_Name: INPUT SYSTEM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &96400113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96400112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 272da0543606d6d4aa5daef196253bac, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96297f86-fac8-47e2-9393-26fd6ec3bbc3
+    m_ActionName: InGameMobile/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2041968068}
+        m_TargetAssemblyTypeName: PlayerControls.CarControl, Assembly-CSharp
+        m_MethodName: GetInputX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a86de3fe-8270-4741-981b-db4df17a1c71
+    m_ActionName: InGameEditor/MoveLeft[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3339f17d-4799-4e71-8004-c67e30249d83
+    m_ActionName: InGameEditor/MouseClick[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: InGameEditor
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &96400115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96400112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.471191, y: 1.1023068, z: 34.37969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &96400116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96400112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f067e12d69124428d899654d6bcc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputEditorChannel: {fileID: 11400000, guid: 89e0b8d86d861e246bc49bfea605bedf, type: 2}
+  inputMobileChannel: {fileID: 11400000, guid: 179bbe13b06f1d64ea34ba57efec5019, type: 2}
 --- !u!1001 &215338153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4209b113a3dd4294db1559434c84f150, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4209b113a3dd4294db1559434c84f150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerOfMass: {x: 0, y: 0, z: 0}
   motorForce: 20
-  turnSensativity: 1
+  turnSensativity: 0.48
   maxSteerAngle: 45
   brakeForce: 20
   wheels:
@@ -535,8 +636,9 @@ MonoBehaviour:
   enginePower: 3223
   brakePower: 3223
   CarMover: {fileID: 215338157}
-  vehicleInteractor: {fileID: 0}
+  vehicleInteractor: {fileID: 215338159}
   CarName: Track
+  rotatingAxel: 0
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &215338159
@@ -553,8 +655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionMask:
     serializedVersion: 2
-    m_Bits: 0
-  radiusInteraction: 2
+    m_Bits: 2147483647
+  radiusInteraction: 6.95
 --- !u!1 &217578928
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +897,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &372440132
 PrefabInstance:
@@ -1128,7 +1230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 142.2, y: -39, z: 1.768}
 --- !u!114 &705507996
 MonoBehaviour:
@@ -1150,6 +1252,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &745746713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 745746714}
+  m_Layer: 0
+  m_Name: -------------TEST VEHICLE-------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &745746714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745746713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.538738, y: 1.6754284, z: 20.585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758226472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: 4209b113a3dd4294db1559434c84f150, type: 3}
@@ -1312,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6e0a97bed671024698f55b2e90fd49c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1432,8 +1565,9 @@ MonoBehaviour:
   enginePower: 3232
   brakePower: 2323
   CarMover: {fileID: 804062608}
-  vehicleInteractor: {fileID: 0}
+  vehicleInteractor: {fileID: 804062610}
   CarName: Jeep
+  rotatingAxel: 0
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &804062610
@@ -1450,7 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
   radiusInteraction: 2
 --- !u!1001 &854976345
 PrefabInstance:
@@ -2142,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 17a17dad74d936645a546852491b713e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 17a17dad74d936645a546852491b713e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2213,6 +2347,7 @@ MonoBehaviour:
   CarMover: {fileID: 1427891478}
   vehicleInteractor: {fileID: 0}
   CarName: Sedan
+  rotatingAxel: 0
   fuelConsumption: 0
   interactableRadius: 5
 --- !u!114 &1427891478
@@ -2556,6 +2691,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b120df7cbd5fc5e499b1159cbd08c448, type: 3}
   m_PrefabInstance: {fileID: 1600137320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1659852476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659852477}
+  m_Layer: 0
+  m_Name: -------------VEHICLE LOGIC-------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1659852477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659852476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.538738, y: 1.6754284, z: 20.585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867614010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2534866581884222612, guid: 17a17dad74d936645a546852491b713e, type: 3}
@@ -2782,7 +2948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041968069}
   - component: {fileID: 2041968068}
-  - component: {fileID: 2041968070}
   m_Layer: 0
   m_Name: CarControl
   m_TagString: Untagged
@@ -2802,8 +2967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cf4df0124344f4aa366fe7838ba209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicleControlChannel: {fileID: 0}
-  targetCar: {fileID: 0}
+  vehicleControlChannel: {fileID: 11400000, guid: 13e8ef1123f8f3f46a9f6b1040e7091d, type: 2}
+  replaceController: {fileID: 484462510}
+  targetCar: {fileID: 215338158}
 --- !u!4 &2041968069
 Transform:
   m_ObjectHideFlags: 0
@@ -2819,56 +2985,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2041968070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041968067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 272da0543606d6d4aa5daef196253bac, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 96297f86-fac8-47e2-9393-26fd6ec3bbc3
-    m_ActionName: InGameMobile/New action
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2041968068}
-        m_TargetAssemblyTypeName: PlayerControls.CarControl, Assembly-CSharp
-        m_MethodName: GetInputX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a86de3fe-8270-4741-981b-db4df17a1c71
-    m_ActionName: InGameEditor/MoveLeft[/Keyboard/a]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: InGameEditor
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &2048615184
 GameObject:
   m_ObjectHideFlags: 3
@@ -3049,7 +3165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2121955177
 MonoBehaviour:

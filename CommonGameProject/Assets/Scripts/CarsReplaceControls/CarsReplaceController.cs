@@ -21,19 +21,15 @@ namespace Cars.ActionsOnVehicle
 
         public void SelectCar(Vector2 mousePosition)
         {
-            var ray = camera.ScreenToWorldPoint(mousePosition);
+            var ray = camera.ScreenPointToRay(mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100000f))
             {
-                if (Input.GetMouseButtonDown(0))
+                var car = hit.transform.GetComponent<Car>();
+                if (car != null)
                 {
-                    var car = hit.transform.GetComponent<Car>();
-                    if (car != null)
-                    {
-                        ReplaceCar(car);
-                    }
+                    ReplaceCar(car);
                 }
-            
             }
         }
     }

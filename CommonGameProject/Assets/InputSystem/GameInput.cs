@@ -74,6 +74,15 @@ namespace InputPresets
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""428a1855-c155-4b98-9cc9-f28e74ec93bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -142,6 +151,17 @@ namespace InputPresets
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf428084-86e3-447c-8a34-340bf6149b30"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -155,6 +175,7 @@ namespace InputPresets
             m_InGameEditor = asset.FindActionMap("InGameEditor", throwIfNotFound: true);
             m_InGameEditor_Movement = m_InGameEditor.FindAction("Movement", throwIfNotFound: true);
             m_InGameEditor_MouseClick = m_InGameEditor.FindAction("MouseClick", throwIfNotFound: true);
+            m_InGameEditor_Brake = m_InGameEditor.FindAction("Brake", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -249,12 +270,14 @@ namespace InputPresets
         private IInGameEditorActions m_InGameEditorActionsCallbackInterface;
         private readonly InputAction m_InGameEditor_Movement;
         private readonly InputAction m_InGameEditor_MouseClick;
+        private readonly InputAction m_InGameEditor_Brake;
         public struct InGameEditorActions
         {
             private @GameInput m_Wrapper;
             public InGameEditorActions(@GameInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_InGameEditor_Movement;
             public InputAction @MouseClick => m_Wrapper.m_InGameEditor_MouseClick;
+            public InputAction @Brake => m_Wrapper.m_InGameEditor_Brake;
             public InputActionMap Get() { return m_Wrapper.m_InGameEditor; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -270,6 +293,9 @@ namespace InputPresets
                     @MouseClick.started -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnMouseClick;
                     @MouseClick.performed -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnMouseClick;
                     @MouseClick.canceled -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnMouseClick;
+                    @Brake.started -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnBrake;
+                    @Brake.performed -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnBrake;
+                    @Brake.canceled -= m_Wrapper.m_InGameEditorActionsCallbackInterface.OnBrake;
                 }
                 m_Wrapper.m_InGameEditorActionsCallbackInterface = instance;
                 if (instance != null)
@@ -280,6 +306,9 @@ namespace InputPresets
                     @MouseClick.started += instance.OnMouseClick;
                     @MouseClick.performed += instance.OnMouseClick;
                     @MouseClick.canceled += instance.OnMouseClick;
+                    @Brake.started += instance.OnBrake;
+                    @Brake.performed += instance.OnBrake;
+                    @Brake.canceled += instance.OnBrake;
                 }
             }
         }
@@ -292,6 +321,7 @@ namespace InputPresets
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnMouseClick(InputAction.CallbackContext context);
+            void OnBrake(InputAction.CallbackContext context);
         }
     }
 }
