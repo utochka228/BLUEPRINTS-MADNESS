@@ -1,17 +1,17 @@
-using Cars;
-using Cars.ActionsOnVehicle;
-using Cars.Movement;
+using Game.Cars;
+using Game.Cars.ActionsOnVehicle;
+using Game.Cars.Movement;
 using InputPresets;
-using InputSystem;
-using Interaction;
-using ScriptableChannels;
+using Game.InputSystem;
+using Game.Interaction;
+using Game.ScriptableChannels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerControls
+namespace Game.PlayerControls
 {
     public class CarControl : MonoBehaviour
     {

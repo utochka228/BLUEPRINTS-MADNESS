@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.ActionsOnVehicle
+namespace Game.Cars.ActionsOnVehicle
 {
     public class CarsReplaceController : MonoBehaviour
     {

@@ -1,10 +1,10 @@
-using PlayerControls;
+using Game.PlayerControls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.Movement
+namespace Game.Cars.Movement
 {
     public enum Axel
     {

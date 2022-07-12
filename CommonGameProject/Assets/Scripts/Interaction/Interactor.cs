@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-namespace Interaction
+namespace Game.Interaction
 {
+    [RequireComponent(typeof(Interactable))]
     public class Interactor : MonoBehaviour
     {
+        public static readonly List<IInteractable> interactables = new List<IInteractable>();
+        private Interactable myInteractable;
         [SerializeField] LayerMask interactionMask;
         [SerializeField] float radiusInteraction = 2f;
-        private Collider[] results = new Collider[5];
+        private Collider[] results;
         private int countFound;
 
         public delegate void InteractDelegate(Collider[] foundInteractables);
         public event InteractDelegate OnInteractablesFound;
+
+        private void Start()
+        {
+            myInteractable = GetComponent<Interactable>();
+        }
+
         private void Update()
         {
             FindInteractables();
@@ -20,13 +30,13 @@ namespace Interaction
 
         private void FindInteractables()
         {
-            countFound = Physics.OverlapSphereNonAlloc(transform.position, radiusInteraction, results, interactionMask);
-            if (countFound > 0)
-                OnInteractablesFound?.Invoke(results);
+            results = Physics.OverlapSphere(transform.position, radiusInteraction, interactionMask);
         }
-
         private void OnDrawGizmos()
         {
+            if (EditorApplication.isPlaying == false)
+                return;
+
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, 1f);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ScriptableChannels
+namespace Game.ScriptableChannels
 {
     [CreateAssetMenu(fileName = "VehicleControlChannel", menuName = "Scriptable channels/Create vehicle control")]
     public class VehicleControlChannel : ScriptableObject

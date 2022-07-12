@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cars.Storage
+namespace Game.Cars.Storage
 {
     /// <summary>
     /// Allow you to announce incapsulated and protected storage for car for resources loading

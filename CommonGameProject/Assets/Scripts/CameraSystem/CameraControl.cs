@@ -1,12 +1,12 @@
-using Cars;
-using Cars.ActionsOnVehicle;
+using Game.Cars;
 using Cinemachine;
+using Game.Cars.ActionsOnVehicle;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CameraSystem
+namespace Game.CameraSystem
 {
     public enum CameraStateModes
     {
