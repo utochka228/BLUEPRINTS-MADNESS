@@ -4,6 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Init.unity
+    guid: 38d397c029e6e5a48838a119978073b9
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 053ab57ac5dc68140bc973cd1402ada3
+  - enabled: 1
+    path: Assets/Scenes/Levels/1/BrokenBridge.unity
+    guid: 96b260a0f2839024aad69fad934afffe
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5ce370ea5458a5d4791f1f9bda8ebd3d, type: 2}
