@@ -16,7 +16,7 @@ namespace Game.Initialization
             var systems = Object.Instantiate(loadedSystems);
             Object.DontDestroyOnLoad(systems);
 
-            Debug.Log("Systems was loaded!");
+            Debug.Log("Systems were loaded!");
         }
     }
 }
