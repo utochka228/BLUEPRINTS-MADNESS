@@ -59,7 +59,6 @@ namespace CameraSystem
         {
             CurrentCarTarget = newCar;
             virtualCamera.Follow = newCar.transform;
-            virtualCamera.
         }
 
         public static void ChangeCameraState(CameraStateModes newState)

@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Vehicle.ActionsOnVehicle
 {
@@ -42,18 +40,15 @@ namespace Vehicle.ActionsOnVehicle
 
             var mat = createdCircle.GetComponent<Renderer>().material;
             var color = mat.GetColor("_BaseColor");
-            LeanTween.color(createdCircle, new Color(color.r, color.g, color.b, 0f), .6f).setOnUpdateColor(
-            (newColor) =>
-            {
-                mat.SetColor("_BaseColor", newColor);
-            });
-            createdCircle.transform.LeanScale(Vector3.one * 6f, 2f).setEaseShake().setOnComplete(() => {
-                GameObject.Destroy(createdCircle);
-            });
-            LeanTween.value(createdTrail, from.position, to.position, speedPerMeter).setOnUpdateVector3(newPos => {
+
+            mat.DOColor(new Color(color.r, color.g, color.b, 0f), .6f);
+
+            createdCircle.transform.DOScale(6f, 2f).OnComplete(() => Object.Destroy(createdCircle));
+
+            DOVirtual.Vector3(from.position, to.position, speedPerMeter, newPos => {
                 renderer.SetPosition(0, from.position);
                 renderer.SetPosition(1, newPos);
-            }).setEaseInOutSine().setOnComplete(() => GameObject.Destroy(createdTrail));
+            }).SetEase(Ease.InOutSine).OnComplete(() => Object.Destroy(createdTrail));
         }
     }
 }
