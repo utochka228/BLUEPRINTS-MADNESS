@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CameraSystem
+namespace Game.CameraSystem
 {
     public partial class CameraControl
     {

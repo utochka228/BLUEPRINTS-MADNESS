@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Vehicle.VehicleList
 {
-    public class Track : Vehicle, IResourcesLoaderFeature
+    public class Track : Car
     {
         private VehicleStorage storage;
         public void LoadItem(Resource resource)

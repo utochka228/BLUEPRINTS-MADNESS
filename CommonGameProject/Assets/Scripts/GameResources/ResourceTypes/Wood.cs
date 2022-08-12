@@ -1,22 +1,12 @@
-using Vehicle;
-using Vehicle.Features.LoadingItems;
+using Game.Cars;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Resources
+namespace Game.Resources
 {
     [CreateAssetMenu(fileName = "Wood", menuName = "Resources/Wood")]
-    public class Wood : Resource, ICanbeLoaded
+    public class Wood : Resource
     {
-        public void Interact()
-        {
-            // Do nothing
-        }
-
-        public void LoadInteraction(Vehicle.Vehicle car)
-        {
-            
-        }
     }
 }

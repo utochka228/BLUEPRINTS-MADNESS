@@ -15,4 +15,4 @@ EditorBuildSettings:
     path: Assets/GameLevels/1/BrokenBridge.unity
     guid: 96b260a0f2839024aad69fad934afffe
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 5ce370ea5458a5d4791f1f9bda8ebd3d, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: a7b816e8bbdc1ea4a81c012a211d4d74, type: 2}

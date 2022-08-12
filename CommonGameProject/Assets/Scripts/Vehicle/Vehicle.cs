@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Vehicle
 {
+    [RequireComponent(typeof(Interactor))]
+    public abstract class Car : MonoBehaviour
     public abstract class Vehicle : MonoBehaviour
     {
         // General common parameters
@@ -17,6 +19,8 @@ namespace Vehicle
         [SerializeField]
         public VehicleMover VehicleMover;
         public string VehicleName;
+
+        public Axel rotatingAxel = Axel.Front;
 
         [SerializeField] float fuelConsumption;
         float currentFuelCount;

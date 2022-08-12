@@ -1,4 +1,4 @@
-using PlayerControls;
+using Game.PlayerControls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -50,55 +50,41 @@ namespace Vehicle.Movement
                 wheel.model.transform.rotation = _rot;
             }
         }
-
-        public void GetInputs()
+        public void SendInputs(Vector2 inputVector)
         {
-            inputX = Input.GetAxis("Horizontal");
-            inputY = -Input.GetAxis("Vertical");
-            SpawnBrakeTracks();
+            inputX = inputVector.x;
+            inputY = -inputVector.y;
         }
 
         public void SpawnBrakeTracks()
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                //Spawn
-                if (brake == false)
-                {
-                    foreach (var wheel in wheels)
-                    {
-                        if (wheel.brakenWheel)
-                        {
-                            var trail = Instantiate(trailPrefab).GetComponent<TrailRenderer>();
-                            currentBrakeTrails.Add(wheel.collider, trail);
-                        }
-                    }
-                }
-                // add to dict
-                brake = true;
-            }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                currentBrakeTrails.Clear();
-                brake = false;
-            }
+            ////Spawn
+            //if (brake == false)
+            //{
+            //    foreach (var wheel in wheels)
+            //    {
+            //        if (wheel.brakenWheel)
+            //        {
+            //            var trail = Instantiate(trailPrefab).GetComponent<TrailRenderer>();
+            //            currentBrakeTrails.Add(wheel.collider, trail);
+            //        }
+            //    }
+            //}
+            //// add to dict
+            //brake = true;
+            //if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    currentBrakeTrails.Clear();
+            //    brake = false;
+            //}
         }
 
         bool brake;
         public void Brake()
         {
-            if (brake)
+            foreach (var wheel in wheels)
             {
-                foreach (var wheel in wheels)
-                {
-                    wheel.collider.brakeTorque = brakeForce;
-                }
-            }else
-            {
-                foreach (var wheel in wheels)
-                {
-                    wheel.collider.brakeTorque = 0;
-                }
+                wheel.collider.brakeTorque = brakeForce;
             }
         }
 
@@ -116,14 +102,14 @@ namespace Vehicle.Movement
             }
         }
 
-        public void Turn()
+        public void Turn(Axel axel)
         {
             foreach (var wheel in wheels)
             {
-                if(wheel.axel == Axel.Front)
+                if(wheel.axel == axel)
                 {
-                    var _steerAngle = inputX * turnSensativity * maxSteerAngle;
-                    wheel.collider.steerAngle = Mathf.Lerp(wheel.collider.steerAngle, _steerAngle, 0.5f);
+                    var _steerAngle = inputX * maxSteerAngle;
+                    wheel.collider.steerAngle = Mathf.Lerp(wheel.collider.steerAngle, _steerAngle, Time.deltaTime * turnSensativity);
                 }
             }
         }
