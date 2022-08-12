@@ -11,6 +11,7 @@ namespace CameraSystem
         [SerializeField] float moveSpeed = 5f;
         private void Move()
         {
+#if UNITY_EDITOR
             if (Input.GetMouseButton(1))
             {
                 horizontalMouse = Input.GetAxisRaw("MouseX");
@@ -19,11 +20,7 @@ namespace CameraSystem
                 //Vector3 moveVector = new Vector3(horizontalMouse *);
                 //virtualCamera.transform.position += new Vector3(,0f, );
             }
-        }
-
-        private void Rotate()
-        {
-
+#endif
         }
     }
 }

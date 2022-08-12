@@ -1,5 +1,5 @@
-using Cars;
-using Cars.ActionsOnVehicle;
+using Vehicle;
+using Vehicle.ActionsOnVehicle;
 using Cinemachine;
 using System;
 using System.Collections;
@@ -22,7 +22,7 @@ namespace CameraSystem
         public delegate void CameraStateMode(CameraStateModes oldState, CameraStateModes newState);
         public static event CameraStateMode OnCameraStateModeChanged;
 
-        private Car CurrentCarTarget;
+        private Vehicle.Vehicle CurrentCarTarget;
         private void Awake()
         {
             i = this;
@@ -30,13 +30,13 @@ namespace CameraSystem
 
         private void OnEnable()
         {
-            CarsReplaceController.OnCarReplaced += SetNewCarTarget;
+            VehiclesReplaceController.OnVehicleReplaced += SetNewCarTarget;
             OnCameraStateModeChanged += SetCameraBehaviour;
         }
 
         private void OnDisable()
         {
-            CarsReplaceController.OnCarReplaced -= SetNewCarTarget;
+            VehiclesReplaceController.OnVehicleReplaced -= SetNewCarTarget;
             OnCameraStateModeChanged -= SetCameraBehaviour;
         }
 
@@ -48,7 +48,6 @@ namespace CameraSystem
         private void Update()
         {
             Move();
-            Rotate();
         }
 
         private void SetCameraBehaviour(CameraStateModes oldState, CameraStateModes newState)
@@ -56,10 +55,11 @@ namespace CameraSystem
             
         }
 
-        private void SetNewCarTarget(Car newCar)
+        private void SetNewCarTarget(Vehicle.Vehicle newCar)
         {
             CurrentCarTarget = newCar;
             virtualCamera.Follow = newCar.transform;
+            virtualCamera.
         }
 
         public static void ChangeCameraState(CameraStateModes newState)
