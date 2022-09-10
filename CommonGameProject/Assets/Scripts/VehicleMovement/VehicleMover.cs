@@ -1,10 +1,8 @@
-using Game.PlayerControls;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vehicle.Movement
+namespace Game.Vehicle.Movement
 {
     public enum Axel
     {

@@ -1,6 +1,5 @@
-using Game.Cars;
+using Game.Vehicle;
 using Cinemachine;
-using Game.Cars.ActionsOnVehicle;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,13 +29,13 @@ namespace Game.CameraSystem
 
         private void OnEnable()
         {
-            VehiclesReplaceController.OnVehicleReplaced += SetNewCarTarget;
+            //VehicleReplacer.OnVehicleReplaced += SetNewCarTarget;
             OnCameraStateModeChanged += SetCameraBehaviour;
         }
 
         private void OnDisable()
         {
-            VehiclesReplaceController.OnVehicleReplaced -= SetNewCarTarget;
+            //VehicleReplacer.OnVehicleReplaced -= SetNewCarTarget;
             OnCameraStateModeChanged -= SetCameraBehaviour;
         }
 

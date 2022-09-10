@@ -1,14 +1,11 @@
-using Vehicle.Features;
-using Vehicle.Movement;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using Game.Interaction;
+using Game.Vehicle.Movement;
 
-namespace Vehicle
+namespace Game.Vehicle
 {
     [RequireComponent(typeof(Interactor))]
-    public abstract class Car : MonoBehaviour
     public abstract class Vehicle : MonoBehaviour
     {
         // General common parameters

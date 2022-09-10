@@ -1,6 +1,3 @@
-using Vehicle.Features;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Resources
@@ -9,10 +6,5 @@ namespace Game.Resources
     {
         [SerializeField]
         private Resource holdedResource;
-
-        public void Interact()
-        {
-            
-        }
     }
 }

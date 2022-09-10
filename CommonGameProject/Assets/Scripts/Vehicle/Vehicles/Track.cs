@@ -1,15 +1,11 @@
-using Vehicle.Features.LoadingItems;
-using Vehicle.Storage;
-using Resources;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Resources;
 
-namespace Vehicle.VehicleList
+namespace Game.Vehicle.VehicleList
 {
-    public class Track : Car
+    public class Track : Vehicle
     {
-        private VehicleStorage storage;
         public void LoadItem(Resource resource)
         {
             

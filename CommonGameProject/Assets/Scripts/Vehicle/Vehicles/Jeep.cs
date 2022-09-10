@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vehicle.VehicleList
+namespace Game.Vehicle.VehicleList
 {
     public class Jeep : Vehicle
     {
