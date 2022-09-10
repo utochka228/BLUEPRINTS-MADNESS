@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils.Convertor;
 
-namespace Vehicle.Storage.Data
+namespace Transport.Storage.Data
 {
     public class CellsWire : DataWire<WireCell>, IConvertable<CellsWireStruct>
     {

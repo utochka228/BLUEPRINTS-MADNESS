@@ -3,9 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using Utils;
 using Utils.Convertor;
-using Vehicle.Storage.Data;
+using Transport.Storage.Data;
 
-namespace Vehicle.Storage.CellsEditorCreator
+namespace Transport.Storage.CellsEditorCreator
 {
     [CustomEditor(typeof(CellsStorageCreator))]
     public class EditorCellsCreator : Editor

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Vehicle.Storage.CellsEditorCreator
+namespace Transport.Storage.CellsEditorCreator
 {
     public class ManipulatorsDrawer : EditorDrawerBase
     {

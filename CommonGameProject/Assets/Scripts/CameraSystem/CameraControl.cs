@@ -1,8 +1,5 @@
-using Game.Vehicle;
+using Game.Transport;
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.CameraSystem
@@ -21,7 +18,7 @@ namespace Game.CameraSystem
         public delegate void CameraStateMode(CameraStateModes oldState, CameraStateModes newState);
         public static event CameraStateMode OnCameraStateModeChanged;
 
-        private Vehicle.Vehicle CurrentCarTarget;
+        private Vehicle CurrentVehicleTarget;
         private void Awake()
         {
             i = this;
@@ -54,10 +51,10 @@ namespace Game.CameraSystem
             
         }
 
-        private void SetNewCarTarget(Vehicle.Vehicle newCar)
+        private void SetNewVehicleTarget(Vehicle newVehicle)
         {
-            CurrentCarTarget = newCar;
-            virtualCamera.Follow = newCar.transform;
+            CurrentVehicleTarget = newVehicle;
+            virtualCamera.Follow = newVehicle.transform;
         }
 
         public static void ChangeCameraState(CameraStateModes newState)

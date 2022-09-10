@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-namespace Vehicle.ActionsOnVehicle
+namespace Transport.ActionsOnVehicle
 {
     public class VehicleRepTrail
     {

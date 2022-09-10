@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Interaction;
-using Game.Vehicle.Movement;
+using Game.Transport.Movement;
 
-namespace Game.Vehicle
+namespace Game.Transport
 {
     [RequireComponent(typeof(Interactor))]
     public abstract class Vehicle : MonoBehaviour
@@ -27,6 +27,7 @@ namespace Game.Vehicle
         // Interaction with IInteractable logic
         //
         //
+        public Interactor vehicleInteractor;
 
         public void Interact()
         {

@@ -1,5 +1,7 @@
 using Game.InputSystem;
 using Game.ScriptableChannels;
+using Game.Transport;
+using Game.Transport.Replacing;
 using InputPresets;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,8 +11,8 @@ namespace Game.PlayerControls
     public class VehicleControl : MonoBehaviour
     {
         [SerializeField] VehicleControlChannel vehicleControlChannel;
-        [SerializeField] VehicleReplacer replaceController;
-        public Vehicle.Vehicle targetCar;
+        [SerializeField] VehicleReplacer vehicleReplacer;
+        public Vehicle targetCar;
 
         InputAction movementAction;
         private void Awake()
@@ -82,13 +84,13 @@ namespace Game.PlayerControls
 
         private void OnEnable()
         {
-            CarsReplaceController.OnCarReplaced += SetNewCar;
+            vehicleReplacer.OnVehicleReplaced += SetNewVehicle;
             targetCar.vehicleInteractor.OnInteractablesFound += OnInteractableFound;
         }
 
         private void OnDisable()
         {
-            CarsReplaceController.OnCarReplaced -= SetNewCar;
+            vehicleReplacer.OnVehicleReplaced -= SetNewVehicle;
             targetCar.vehicleInteractor.OnInteractablesFound -= OnInteractableFound;
         }
 
@@ -97,9 +99,9 @@ namespace Game.PlayerControls
 
         }
 
-        private void SetNewCar(Car newCar)
+        private void SetNewVehicle(Vehicle newVehicle)
         {
-            targetCar = newCar;
+            targetCar = newVehicle;
         }
 
         void Update()
@@ -108,16 +110,16 @@ namespace Game.PlayerControls
                 return;
 
             SendInputs();
-            targetCar.CarMover.AnimateWheels();
-            targetCar.CarMover.SnapTrailsWheelsPos();
+            targetCar.VehicleMover.AnimateWheels();
+            targetCar.VehicleMover.SnapTrailsWheelsPos();
         }
         private void FixedUpdate()
         {
             if (targetCar == null)
                 return;
 
-            targetCar.CarMover.Move();
-            targetCar.CarMover.Turn(targetCar.rotatingAxel);
+            targetCar.VehicleMover.Move();
+            targetCar.VehicleMover.Turn(targetCar.rotatingAxel);
         }
     }
 }

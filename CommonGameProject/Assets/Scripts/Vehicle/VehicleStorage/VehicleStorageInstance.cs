@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vehicle.Storage
+namespace Transport.Storage
 {
     [CreateAssetMenu]
     public class VehicleStorageInstance : ScriptableObject

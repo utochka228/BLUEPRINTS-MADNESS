@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Resources;
 
-namespace Game.Vehicle.VehicleList
+namespace Game.Transport.VehicleList
 {
     public class Track : Vehicle
     {

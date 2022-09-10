@@ -5,7 +5,7 @@ using UnityEngine;
 using Utils;
 using static Utils.PolygonUtils;
 
-namespace Vehicle.Storage.CellsEditorCreator
+namespace Transport.Storage.CellsEditorCreator
 {
     public class CellswireInput : HandlesInput
     {

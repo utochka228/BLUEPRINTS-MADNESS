@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Utils.Convertor;
 
-namespace Vehicle.Storage.Data
+namespace Transport.Storage.Data
 {
     public abstract class DataWire<T> where T : struct
     {

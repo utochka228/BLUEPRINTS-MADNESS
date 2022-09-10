@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Vehicle.Movement
+namespace Game.Transport.Movement
 {
     public enum Axel
     {
