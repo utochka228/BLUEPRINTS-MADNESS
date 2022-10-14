@@ -26,28 +26,20 @@ namespace Game.Transport.Movement
         [SerializeField] float brakeForce = 20f;
         [SerializeField] List<Wheel> wheels;
         [SerializeField] GameObject trailPrefab;
-        Dictionary<WheelCollider, TrailRenderer> currentBrakeTrails = new Dictionary<WheelCollider, TrailRenderer>();
 
         private float inputX, inputY;
         private Rigidbody rb;
+
+        private bool brake;
+        public bool IsBraking { get => brake; }
+        public List<Wheel> Wheels { get => wheels; }
 
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
             rb.centerOfMass = centerOfMass;
         }
-
-        public void AnimateWheels()
-        {
-            foreach (var wheel in wheels)
-            {
-                Quaternion _rot;
-                Vector3 _pos;
-                wheel.collider.GetWorldPose(out _pos, out _rot);
-                wheel.model.transform.position = _pos;
-                wheel.model.transform.rotation = _rot;
-            }
-        }
+        
         public void SendInputs(Vector2 inputVector)
         {
             inputX = inputVector.x;
@@ -77,26 +69,11 @@ namespace Game.Transport.Movement
             //}
         }
 
-        bool brake;
         public void Brake()
         {
             foreach (var wheel in wheels)
             {
                 wheel.collider.brakeTorque = brakeForce;
-            }
-        }
-
-
-        public void SnapTrailsWheelsPos()
-        {
-            if (brake == false)
-                return;
-
-            //Set poses
-            foreach (var trail in currentBrakeTrails)
-            {
-                trail.Key.GetWorldPose(out Vector3 pos, out Quaternion rot);
-                trail.Value.transform.position = pos;
             }
         }
 

@@ -110,8 +110,6 @@ namespace Game.PlayerControls
                 return;
 
             SendInputs();
-            targetCar.VehicleMover.AnimateWheels();
-            targetCar.VehicleMover.SnapTrailsWheelsPos();
         }
         private void FixedUpdate()
         {

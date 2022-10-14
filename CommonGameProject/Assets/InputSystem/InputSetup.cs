@@ -7,7 +7,7 @@ namespace Game.InputSystem
 {
     public enum InputStage
     {
-        Gameplay, Menu
+        Gameplay, Menu, Paused
     }
     public class InputSetup : MonoBehaviour
     {

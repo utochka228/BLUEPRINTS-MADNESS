@@ -12,14 +12,11 @@ namespace Game.CameraSystem
         private void Move()
         {
 #if UNITY_EDITOR
-            if (Input.GetMouseButton(1))
-            {
-                horizontalMouse = Input.GetAxisRaw("MouseX");
-                verticalMouse = Input.GetAxisRaw("MouseY");
+                //horizontalMouse = Input.GetAxisRaw("MouseX");
+                //verticalMouse = Input.GetAxisRaw("MouseY");
 
                 //Vector3 moveVector = new Vector3(horizontalMouse *);
                 //virtualCamera.transform.position += new Vector3(,0f, );
-            }
 #endif
         }
     }

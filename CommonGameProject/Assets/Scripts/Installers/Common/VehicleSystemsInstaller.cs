@@ -11,15 +11,26 @@ namespace Game.Installers
     {
         [SerializeField] VehicleReplacer vehicleReplacer;
         [SerializeField] VehicleControl vehicleControl;
-        [SerializeField] VehicleMover vehicleMover;
         public override void InstallBindings()
         {
             BindVehicleReplacer();
+            BindVehicleControl();
+        }
+
+        private void BindVehicleControl()
+        {
+            Container
+                .Bind<VehicleControl>()
+                .FromInstance(vehicleControl)
+                .AsSingle();
         }
 
         private void BindVehicleReplacer()
         {
-
+            Container
+                .Bind<VehicleReplacer>()
+                .FromInstance(vehicleReplacer)
+                .AsSingle();
         }
     }
 }

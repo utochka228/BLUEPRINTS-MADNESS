@@ -8,14 +8,8 @@ namespace Game.Installers
 {
     public class LevelBootInstaller : MonoInstaller
     {
-        [SerializeField] Vehicle startVehicle;
-        [SerializeField] VehicleReplacer vehicleReplacer;
+        
         public override void InstallBindings()
-        {
-            BindStartVehicle();
-        }
-
-        private void BindStartVehicle()
         {
             
         }

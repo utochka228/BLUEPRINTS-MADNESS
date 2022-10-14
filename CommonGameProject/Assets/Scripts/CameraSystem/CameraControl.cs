@@ -10,7 +10,6 @@ namespace Game.CameraSystem
     }
     public partial class CameraControl : MonoBehaviour
     {
-        public static CameraControl i;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
 
         public CameraStateModes CurrentCameraMode { get; private set; }
@@ -19,10 +18,6 @@ namespace Game.CameraSystem
         public static event CameraStateMode OnCameraStateModeChanged;
 
         private Vehicle CurrentVehicleTarget;
-        private void Awake()
-        {
-            i = this;
-        }
 
         private void OnEnable()
         {
@@ -51,21 +46,16 @@ namespace Game.CameraSystem
             
         }
 
-        private void SetNewVehicleTarget(Vehicle newVehicle)
+        public void SetNewVehicleTarget(Vehicle newVehicle)
         {
             CurrentVehicleTarget = newVehicle;
             virtualCamera.Follow = newVehicle.transform;
         }
 
-        public static void ChangeCameraState(CameraStateModes newState)
+        public void ChangeCameraState(CameraStateModes newState)
         {
-            if(i == null)
-            {
-                Debug.LogError("Camera singleton is null!");
-                return;
-            }
-            var oldCameraState = i.CurrentCameraMode;
-            i.CurrentCameraMode = newState;
+            var oldCameraState = CurrentCameraMode;
+            CurrentCameraMode = newState;
             OnCameraStateModeChanged?.Invoke(oldCameraState, newState);
         }
     }

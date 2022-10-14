@@ -6,6 +6,8 @@ using Game.Transport.Movement;
 namespace Game.Transport
 {
     [RequireComponent(typeof(Interactor))]
+    [RequireComponent(typeof(VehicleMover))]
+    [RequireComponent(typeof(VehicleVisualsProcessor))]
     public abstract class Vehicle : MonoBehaviour
     {
         // General common parameters
