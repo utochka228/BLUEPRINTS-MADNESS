@@ -10,8 +10,12 @@ namespace Game.Transport.Replacing
     /// </summary>
     public class VehicleReplacer : MonoBehaviour
     {
+        public delegate void VehicleNewPrevReplaced(Vehicle vehicle, Vehicle previousVehicle);
         public delegate void VehicleReplaced(Vehicle vehicle);
         public event VehicleReplaced OnVehicleReplaced;
+        public event VehicleNewPrevReplaced OnVehicleNewPrevReplaced;
+
+        private Vehicle targetVehicle;
 
         #region ScriptsForReplace
 
@@ -20,9 +24,10 @@ namespace Game.Transport.Replacing
 
         #endregion
 
-        public void Replace(Vehicle selectedVehicle)
+        public void Replace(Vehicle newVehicle)
         {
-            cameraSystem.SetNewVehicleTarget(selectedVehicle);
+            OnVehicleNewPrevReplaced?.Invoke(newVehicle, targetVehicle);
+            OnVehicleReplaced?.Invoke(newVehicle);
         }
     }
 }

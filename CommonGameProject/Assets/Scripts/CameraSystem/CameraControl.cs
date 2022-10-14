@@ -1,6 +1,7 @@
 using Game.Transport;
 using Cinemachine;
 using UnityEngine;
+using Game.Transport.Replacing;
 
 namespace Game.CameraSystem
 {
@@ -11,6 +12,7 @@ namespace Game.CameraSystem
     public partial class CameraControl : MonoBehaviour
     {
         [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [SerializeField] VehicleReplacer vehicleReplacer;
 
         public CameraStateModes CurrentCameraMode { get; private set; }
 
@@ -21,13 +23,13 @@ namespace Game.CameraSystem
 
         private void OnEnable()
         {
-            //VehicleReplacer.OnVehicleReplaced += SetNewCarTarget;
+            vehicleReplacer.OnVehicleReplaced += SetNewVehicleTarget;
             OnCameraStateModeChanged += SetCameraBehaviour;
         }
 
         private void OnDisable()
         {
-            //VehicleReplacer.OnVehicleReplaced -= SetNewCarTarget;
+            vehicleReplacer.OnVehicleReplaced -= SetNewVehicleTarget;
             OnCameraStateModeChanged -= SetCameraBehaviour;
         }
 

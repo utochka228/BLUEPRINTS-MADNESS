@@ -28,5 +28,15 @@ namespace Game.Transport.VehicleList
                 
             }
         }
+
+        protected override void SubscribeEditorInput()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void SubscribeMobileInput()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
