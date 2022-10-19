@@ -9,6 +9,10 @@ namespace Game.InputSystem
     }
     public class InputSetup : MonoBehaviour
     {
-
+        public PlayerInputControls PlayerControls { get; private set; }
+        private void Awake()
+        {
+            PlayerControls = new();
+        }
     }
 }

@@ -11,12 +11,7 @@ namespace Game.Transport.VehicleList
             
         }
 
-        protected override void SubscribeEditorInput()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void SubscribeMobileInput()
+        protected override void SubscribeInput()
         {
             throw new System.NotImplementedException();
         }

@@ -1,6 +1,5 @@
 using Game.CameraSystem;
-using System.Collections;
-using System.Collections.Generic;
+using Game.InputSystem;
 using UnityEngine;
 
 namespace Game.Transport.Replacing
@@ -10,10 +9,16 @@ namespace Game.Transport.Replacing
     /// </summary>
     public class VehicleReplacer : MonoBehaviour
     {
+        #region Events
+
         public delegate void VehicleNewPrevReplaced(Vehicle vehicle, Vehicle previousVehicle);
         public delegate void VehicleReplaced(Vehicle vehicle);
         public event VehicleReplaced OnVehicleReplaced;
         public event VehicleNewPrevReplaced OnVehicleNewPrevReplaced;
+
+        #endregion
+
+        [SerializeField] InputSetup inputSetup;
 
         private Vehicle targetVehicle;
 
@@ -26,8 +31,20 @@ namespace Game.Transport.Replacing
 
         public void Replace(Vehicle newVehicle)
         {
+            targetVehicle = newVehicle;
+
+            SetVehicleInputsActivation();
+
             OnVehicleNewPrevReplaced?.Invoke(newVehicle, targetVehicle);
             OnVehicleReplaced?.Invoke(newVehicle);
+        }
+
+        private void SetVehicleInputsActivation()
+        {
+            if (targetVehicle == null)
+                inputSetup.PlayerControls.VehicleControls.Disable();
+            else
+                inputSetup.PlayerControls.VehicleControls.Enable();
         }
     }
 }

@@ -27,6 +27,8 @@ namespace Game.Transport.Movement
         [SerializeField] List<Wheel> wheels;
         [SerializeField] GameObject trailPrefab;
 
+        private Vehicle myVehicle;
+
         private float inputX, inputY;
         private Rigidbody rb;
 
@@ -36,40 +38,21 @@ namespace Game.Transport.Movement
 
         private void Start()
         {
+            myVehicle = GetComponent<Vehicle>();
+
             rb = GetComponent<Rigidbody>();
             rb.centerOfMass = centerOfMass;
         }
         
-        public void SendInputs(Vector2 inputVector)
+        public void GetMovementInputs(Vector2 inputVector)
         {
             inputX = inputVector.x;
             inputY = -inputVector.y;
         }
 
-        public void SpawnBrakeTracks()
-        {
-            ////Spawn
-            //if (brake == false)
-            //{
-            //    foreach (var wheel in wheels)
-            //    {
-            //        if (wheel.brakenWheel)
-            //        {
-            //            var trail = Instantiate(trailPrefab).GetComponent<TrailRenderer>();
-            //            currentBrakeTrails.Add(wheel.collider, trail);
-            //        }
-            //    }
-            //}
-            //// add to dict
-            //brake = true;
-            //if (Input.GetKeyUp(KeyCode.Space))
-            //{
-            //    currentBrakeTrails.Clear();
-            //    brake = false;
-            //}
-        }
+        #region MovingLogic
 
-        public void Brake()
+        private void Brake()
         {
             foreach (var wheel in wheels)
             {
@@ -77,7 +60,7 @@ namespace Game.Transport.Movement
             }
         }
 
-        public void Turn(Axel axel)
+        private void Turn(Axel axel)
         {
             foreach (var wheel in wheels)
             {
@@ -89,12 +72,24 @@ namespace Game.Transport.Movement
             }
         }
 
-        public void Move()
+        private void Move()
         {
             foreach (var wheel in wheels)
             {
                 wheel.collider.motorTorque = inputY * motorForce * 500 * Time.deltaTime;
             }
+        }
+
+        #endregion
+
+
+        private void FixedUpdate()
+        {
+            if (myVehicle == null)
+                return;
+
+            Move();
+            Turn(myVehicle.rotatingAxel);
         }
     }
 }

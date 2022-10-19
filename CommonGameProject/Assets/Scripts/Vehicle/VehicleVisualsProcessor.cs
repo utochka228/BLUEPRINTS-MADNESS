@@ -39,5 +39,28 @@ namespace Game.Transport
                 trail.Value.transform.position = pos;
             }
         }
+
+        public void SpawnBrakeTracks()
+        {
+            ////Spawn
+            //if (brake == false)
+            //{
+            //    foreach (var wheel in wheels)
+            //    {
+            //        if (wheel.brakenWheel)
+            //        {
+            //            var trail = Instantiate(trailPrefab).GetComponent<TrailRenderer>();
+            //            currentBrakeTrails.Add(wheel.collider, trail);
+            //        }
+            //    }
+            //}
+            //// add to dict
+            //brake = true;
+            //if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    currentBrakeTrails.Clear();
+            //    brake = false;
+            //}
+        }
     }
 }

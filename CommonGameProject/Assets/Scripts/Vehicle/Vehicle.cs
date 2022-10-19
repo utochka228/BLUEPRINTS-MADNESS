@@ -52,10 +52,7 @@ namespace Game.Transport
 
         private void Awake()
         {
-            if(ProjectUtils.IsMobilePlatform())
-                SubscribeMobileInput();
-            else
-                SubscribeEditorInput();
+            SubscribeInput();
         }
 
         private void Start()
@@ -86,7 +83,6 @@ namespace Game.Transport
         /// <summary>
         /// Each vehicle type subscribes at the Awake custom controls input.
         /// </summary>
-        protected abstract void SubscribeMobileInput();
-        protected abstract void SubscribeEditorInput();
+        protected abstract void SubscribeInput();
     }
 }

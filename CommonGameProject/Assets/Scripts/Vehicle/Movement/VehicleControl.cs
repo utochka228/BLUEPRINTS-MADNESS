@@ -1,3 +1,4 @@
+using Game.InputSystem;
 using Game.Transport;
 using Game.Transport.Replacing;
 using System;
@@ -9,23 +10,48 @@ namespace Game.PlayerControls
 {
     public class VehicleControl : MonoBehaviour
     {
+        public Vehicle TargetVehicle { get; private set; }
+
         [SerializeField] VehicleReplacer vehicleReplacer;
-        public Vehicle TargetVehicle { get; private set; }  
+
+        [SerializeField] InputSetup inputSetup;
 
         [SerializeField] Transform controlsCanvasesParent;
 
         private readonly Dictionary<Vehicle, Canvas> mobileControlsCanvases = new();
-
-        private void Awake()
-        {
-            
-        }
 
         private void OnEnable()
         {
             vehicleReplacer.OnVehicleReplaced += SetNewVehicle;
             vehicleReplacer.OnVehicleNewPrevReplaced += SetupVehicleControls;
             TargetVehicle.vehicleInteractor.OnInteractablesFound += OnInteractableFound;
+
+            SubsribeVehicleInputs();
+        }
+
+        private void SubsribeVehicleInputs()
+        {
+            inputSetup.PlayerControls.VehicleControls
+                .Brake.performed += Brake;
+            inputSetup.PlayerControls.VehicleControls
+                .Gas.performed += Gas; ;
+        }
+
+
+        private void UnscribeVehicleInputs()
+        {
+            inputSetup.PlayerControls.VehicleControls
+                .Brake.performed -= Brake;
+        }
+
+        private void Gas(InputAction.CallbackContext obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Brake(InputAction.CallbackContext obj)
+        {
+            throw new NotImplementedException();
         }
 
         private void OnDisable()
@@ -33,30 +59,16 @@ namespace Game.PlayerControls
             vehicleReplacer.OnVehicleReplaced -= SetNewVehicle;
             vehicleReplacer.OnVehicleNewPrevReplaced -= SetupVehicleControls;
             TargetVehicle.vehicleInteractor.OnInteractablesFound -= OnInteractableFound;
+
+            UnscribeVehicleInputs();
         }
 
+        #region MobileControls
         public void SpawnMobileControlsCanvas(Vehicle targetVehicle, Canvas controlsCanvas)
         {
             var spawnedCanvas = Instantiate(controlsCanvas, controlsCanvasesParent);
             spawnedCanvas.gameObject.SetActive(false);
             mobileControlsCanvases.Add(targetVehicle, spawnedCanvas);
-        }
-
-        private void SetupVehicleControls(Vehicle vehicle, Vehicle previousVehicle)
-        {
-            if (ProjectUtils.IsMobilePlatform())
-            {
-                SetupMobileControls(vehicle, previousVehicle);
-            }
-            else
-            {
-                SetupEditorControls();
-            }
-        }
-
-        private void SetupEditorControls()
-        {
-            throw new NotImplementedException();
         }
 
         private void SetupMobileControls(Vehicle vehicle, Vehicle previousVehicle)
@@ -76,6 +88,29 @@ namespace Game.PlayerControls
             }
         }
 
+        #endregion
+
+        #region EditorControls
+
+        private void SetupEditorControls()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        private void SetupVehicleControls(Vehicle vehicle, Vehicle previousVehicle)
+        {
+            if (ProjectUtils.IsMobilePlatform())
+            {
+                SetupMobileControls(vehicle, previousVehicle);
+            }
+            else
+            {
+                SetupEditorControls();
+            }
+        }
+       
         private void OnInteractableFound(Collider[] foundInteractables)
         {
 
@@ -97,15 +132,6 @@ namespace Game.PlayerControls
         private void SendInputs()
         {
             
-        }
-
-        private void FixedUpdate()
-        {
-            if (TargetVehicle == null)
-                return;
-
-            TargetVehicle.VehicleMover.Move();
-            TargetVehicle.VehicleMover.Turn(TargetVehicle.rotatingAxel);
         }
     }
 }
